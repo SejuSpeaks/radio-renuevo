@@ -8,10 +8,10 @@ const HomeScreen = ({navigation:{navigate}}) => {
     return (
     <SafeAreaView style={{backgroundColor:'white'}}>
     <NavBar/>
+    
+    <Events/>
 
-    <View>
-      <Events/>
-    </View>
+
 
    </SafeAreaView>
     )

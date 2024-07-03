@@ -1,31 +1,41 @@
-import {View, Text, StyleSheet} from 'react-native';
+import React, { useState, useRef } from 'react';
+import { View, Text, StyleSheet, Image, ScrollView, Dimensions } from 'react-native';
 
-const Events =() => {
-    return(
-        <View style={styles.container}>
-            <Text style={styles.heading}>Eventos</Text>
-        </View>
-    )
-}
+const { width } = Dimensions.get('window');
+
+
+
+const Events = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.heading}>Eventos</Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-    image: {
-        height: 50,
-        width: 150,
-        justifyContent:'center',
-    },
-    heading:{
-        fontSize:30,
-        fontWeight:'bold',
-    },
     container: {
-        paddingLeft:10,
-        
+      flexDirection: 'column',
+      padding: 10,
+      backgroundColor: '#fff',
+      flex: 1,
+      borderWidth: 2,
+      borderColor: '#000',
     },
-    icon: {
-        height: 30,
-        width: 20
-    }
-})
+    heading: {
+      fontSize: 30,
+      fontWeight: 'bold',
+      marginBottom: 20,
+    },
+    
+    image: {
+      width: '100%',
+      height: 400,
+      resizeMode: 'cover',
+    },
+  });
 
 export default Events;
