@@ -5,10 +5,13 @@ import NavBar from './NavBar';
 import Events from './Events';
 import Radio from './Radio';
 import Socials from './Socials';
+import HomeBar from './HomeBar';
 
 const HomeScreen = ({navigation:{navigate}}) => {
     return (
     <SafeAreaView style={{backgroundColor:'white'}}>
+    <ScrollView >
+
     <NavBar/> 
     
     <View style={styles.container}>
@@ -23,13 +26,15 @@ const HomeScreen = ({navigation:{navigate}}) => {
       <Socials/>
     </View>
 
+    </ScrollView>
+    <HomeBar/>
    </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
   container:{
-    marginBottom:25,
+    marginBottom:0,
   }
 })
 

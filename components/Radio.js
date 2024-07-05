@@ -9,7 +9,7 @@ const artistData = [
         profile_image: require("../assets/mama.png")
     },
     {
-        name:" Jo C El JEFE",
+        name:"El Capellan",
         profile_image: require("../assets/events/Image.png")
     },
     {
@@ -36,13 +36,14 @@ const ArtistProfile = ({artist}) => {
 const Radio = () => {
     return (
         <View>
-            <Text style={styles.heading}>Radio</Text>
+            <Text style={styles.heading}>Presentadores</Text>
 
             <View style={styles.itemContainer}>
                 <FlatList 
                 data={artistData} 
                 renderItem={({item})=> <ArtistProfile artist={item}/>}
                 horizontal
+                showsHorizontalScrollIndicator={false}
                 />
             </View>
         </View>
@@ -51,11 +52,12 @@ const Radio = () => {
 
 const styles = StyleSheet.create(
     {
-        heading:{
-            fontSize:24,
-            marginBottom:16,
-            fontWeight:'bold',
-        },
+        heading: {
+            fontSize: 24,
+            padding:10,
+            fontWeight: 'bold',
+            marginBottom: 16,
+          },
         image:{
             borderRadius: '100%',
             height: 150,
