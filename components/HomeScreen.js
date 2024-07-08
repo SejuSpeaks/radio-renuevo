@@ -9,7 +9,7 @@ import HomeBar from './HomeBar';
 
 const HomeScreen = ({navigation:{navigate}}) => {
     return (
-    <SafeAreaView style={{backgroundColor:'white'}}>
+    <SafeAreaView style={{backgroundColor:'white', flex:1}}>
     <ScrollView >
 
     <NavBar/> 
@@ -27,7 +27,11 @@ const HomeScreen = ({navigation:{navigate}}) => {
     </View>
 
     </ScrollView>
-    <HomeBar/>
+
+    {/* <View style={styles.homeBar}>
+      <HomeBar/>
+    </View> */}
+    
    </SafeAreaView>
     )
 }
@@ -35,7 +39,12 @@ const HomeScreen = ({navigation:{navigate}}) => {
 const styles = StyleSheet.create({
   container:{
     marginBottom:0,
-  }
+  },
+  homeBar: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+},
 })
 
 export default HomeScreen;

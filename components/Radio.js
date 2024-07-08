@@ -1,5 +1,7 @@
-import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
+import ArtistProfile from "./ArtistProfile";
 
 const {width} = Dimensions.get('window')
 
@@ -24,12 +26,15 @@ const artistData = [
 ]
 
 
-const ArtistProfile = ({artist}) => {
+const ArtistIcon = ({artist}) => {
+    const navigation = useNavigation();
     return(
-        <View style={styles.artistContainer}>
-            <Image source={artist.profile_image} style={styles.image}/>
-            <Text>{artist.name}</Text>
-        </View>
+        <TouchableOpacity onPress={()=> navigation.navigate("ArtistProfile", {artist})}>
+            <View style={styles.artistContainer}>
+                <Image source={artist.profile_image} style={styles.image}/>
+                <Text>{artist.name}</Text>
+            </View>
+        </TouchableOpacity>
     )
 }
 
@@ -41,7 +46,7 @@ const Radio = () => {
             <View style={styles.itemContainer}>
                 <FlatList 
                 data={artistData} 
-                renderItem={({item})=> <ArtistProfile artist={item}/>}
+                renderItem={({item})=> <ArtistIcon artist={item}/>}
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 />

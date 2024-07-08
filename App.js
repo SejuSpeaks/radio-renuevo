@@ -5,7 +5,10 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import HomeScreen from './components/HomeScreen'; 
+import Live from './components/Live';
 import NotificationsScreen from './components/NotificationsScreen'; // Adjust the path as necessary
+import HomeBar from './components/HomeBar';
+import ArtistProfile from './components/ArtistProfile';
 
 const Stack = createStackNavigator();
 
@@ -17,7 +20,15 @@ function App() {
         <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name='Notifications' component={NotificationsScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name='Live' component={Live} options={{headerShown:false, 
+           transitionSpec: {
+            open: { animation: 'timing', config: { duration: 0 } },
+            close: { animation: 'timing', config: { duration: 0 } },
+          },
+        }}/>
+        <Stack.Screen name="ArtistProfile" component={ArtistProfile} options={{headerShown:false}}/>
         </Stack.Navigator>
+        <HomeBar/>
       </NavigationContainer>
     </GestureHandlerRootView>
   );
