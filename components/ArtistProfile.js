@@ -1,9 +1,12 @@
-import { View,SafeAreaView,Text } from "react-native";
+import { View,SafeAreaView,Text,Image } from "react-native";
 
-const ArtistProfile = () => {
+const ArtistProfile = ({route}) => {
+    const artist = route.params;
+
     return (
         <SafeAreaView>
-            <Text>Profile</Text>
+            <Image source={artist.profile_image}/>
+            <Text>{artist.name}</Text>
         </SafeAreaView>
     )
 }

@@ -29,7 +29,7 @@ const artistData = [
 const ArtistIcon = ({artist}) => {
     const navigation = useNavigation();
     return(
-        <TouchableOpacity onPress={()=> navigation.navigate("ArtistProfile", {artist})}>
+        <TouchableOpacity onPress={()=> navigation.navigate("ArtistProfile", artist)}>
             <View style={styles.artistContainer}>
                 <Image source={artist.profile_image} style={styles.image}/>
                 <Text>{artist.name}</Text>
