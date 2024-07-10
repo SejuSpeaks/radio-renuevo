@@ -1,6 +1,9 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import * as SplashScreen from 'expo-splash-screen';
+import {useFonts} from 'expo-font';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -14,8 +17,20 @@ import { SafeAreaView } from 'react-native';
 
 const Stack = createStackNavigator();
 
+SplashScreen.preventAutoHideAsync();
 
 function App() {
+  //loading the fonts into the app
+  const [loaded,error] = useFonts({
+    'Gotahm-Bold': require('./assets/fonts/Gotham-Font/Gotham-Bold.otf'),
+  })
+
+  useEffect(()=>{
+    if(loaded || error) SplashScreen.hideAsync()
+  },[loaded,error])
+
+  if (!loaded && !error) return null;
+
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor:'white' }}>
       <NavigationContainer>

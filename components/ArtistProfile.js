@@ -70,7 +70,12 @@ const styles = StyleSheet.create({
         color:'white',
         fontSize:35,
         bottom:10,
-        padding:10
+        padding:10,
+        fontFamily:'Gotham-Bold',
+        textShadowColor: 'rgba(0, 0, 0, 0.8)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 10,
+        borderRadius: 5,
     },
     image:{
         borderRadius:5,
@@ -87,6 +92,7 @@ const styles = StyleSheet.create({
     programImage:{
         height:200,
         width:"fit",
+        borderRadius:5,
     }
 })
 

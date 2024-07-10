@@ -37,7 +37,7 @@ const HomeScreen = ({navigation:{navigate}}) => {
 
 const styles = StyleSheet.create({
   container:{
-    marginBottom:0,
+    marginBottom:30,
   },
   homeBar: {
     position: 'absolute',
