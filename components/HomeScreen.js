@@ -21,6 +21,7 @@ const HomeScreen = ({navigation:{navigate}}) => {
     </View>
 
     <View>
+      <Text style={styles.heading}>Socials</Text>
       <Socials/>
     </View>
 
@@ -42,6 +43,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     width: '100%',
+},
+heading: {
+  fontSize: 24,
+  padding:10,
+  fontWeight: 'bold',
+  marginBottom: 16,
 },
 })
 

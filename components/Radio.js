@@ -16,6 +16,7 @@ const artistData = [
         name:"El Capellan",
         profile_image: require("../assets/events/Image.png"),
         bio:"Integer at egestas arcu. Integer a condimentum orci. Proin enim felis, gravida dignissim posuere sed, tincidunt vel purus. Vivamus vitae venenatis ipsum. Phasellus bibendum libero sed enim egestas sagittis. Vivamus porttitor ante id velit aliquam, vel ornare metus dictum. Vivamus scelerisque ligula ac nunc pretium posuere. Cras finibus enim non lectus dictum, ac suscipit leo vulputate. Aenean dignissim ac ligula eu aliquam. Quisque eget nisl scelerisque, maximus orci ac, gravida tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque posuere laoreet augue, vitae facilisis velit egestas ac. Cras id risus pharetra, dictum tellus viverra, egestas sem. Vivamus nec porta tellus.",
+        program:require("../assets/events/Image.png"),
     },
     {
         name:"Marbelis Candela",

@@ -66,8 +66,6 @@ const displaySocials = socials.map((social,index) => <Icon key={index} social={s
 const Socials = () => {
     return (
         <View>
-            <Text style={styles.heading}>Socials</Text>
-
             <View style={styles.iconsContainer}>
                 {displaySocials}
             </View>

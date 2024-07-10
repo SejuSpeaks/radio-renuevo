@@ -1,18 +1,25 @@
-import { View,SafeAreaView,Text,Image,StyleSheet } from "react-native";
+import { View,SafeAreaView,Text,Image,StyleSheet,Dimensions } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Socials from "./Socials";
+
+const {width, height} = Dimensions.get('window');
+
 
 const ArtistProfile = ({route}) => {
     const artist = route.params;
 
     return (
-        <SafeAreaView style={{backgroundColor:"white", flex:1}}>
+        <SafeAreaView style={{backgroundColor:"white", flex:1, }}>
             <ScrollView>
+                
+            <View style={styles.artistHeader}>
+                <View style={styles.center}>
+                    <Image style={styles.image} source={artist.profile_image}/>
+                    <Text style={styles.artistName}>{artist.name}</Text>
+                </View>
 
-            <View style={styles.center}>
-                <Image style={styles.image} source={artist.profile_image}/>
-                <Text style={styles.artistName}>{artist.name}</Text>
             </View>
 
             <View style={styles.container}>
@@ -25,34 +32,52 @@ const ArtistProfile = ({route}) => {
                 <Text style={styles.p}>{artist.bio}</Text>
             </View>
 
+            <View style={styles.container}>
+            <Text style={styles.heading}>Socials</Text>
+                <Socials/>
+            </View>
+
             </ScrollView>
         </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
+    artistHeader:{
+        marginBottom:0,
+    },
     center:{
-       padding:30,
-       alignItems:"center",
-       gap:30
+       gap:30,
+       borderWidth:0,
+       position:'relative'
+       
+
     },
     container:{
         padding:15,
+        backgroundColor: 'rgba(100, 100, 100, 0.1)',
         
     },
     heading:{
-        fontSize:35,
+        fontSize:25,
         fontWeight:"bold",
         marginBottom:20,
     },
     artistName:{
         fontSize:20,
-        fontWeight:"700"
+        fontWeight:"700",
+        position:'absolute',
+        color:'white',
+        fontSize:35,
+        bottom:10,
+        padding:10
     },
     image:{
-        borderRadius:10,
-        height:250,
-        width:250
+        borderRadius:5,
+        height:height * 0.4,
+        borderWidth:0,
+        width:width,
+        resizeMode:"cover",
     },
     p:{
         textAlign:"left",
