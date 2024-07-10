@@ -11,8 +11,6 @@ const HomeScreen = ({navigation:{navigate}}) => {
     return (
     <SafeAreaView style={{backgroundColor:'white', flex:1}}>
     <ScrollView >
-
-    <NavBar/> 
     
     <View style={styles.container}>
       <Events/>

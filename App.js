@@ -9,6 +9,8 @@ import Live from './components/Live';
 import NotificationsScreen from './components/NotificationsScreen'; // Adjust the path as necessary
 import HomeBar from './components/HomeBar';
 import ArtistProfile from './components/ArtistProfile';
+import NavBar from './components/NavBar';
+import { SafeAreaView } from 'react-native';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +19,9 @@ function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor:'white' }}>
       <NavigationContainer>
+        <SafeAreaView>
+          <NavBar/>
+        </SafeAreaView>
         <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name='Notifications' component={NotificationsScreen} options={{ headerShown: false }}/>

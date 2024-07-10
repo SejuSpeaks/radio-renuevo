@@ -36,6 +36,7 @@ const HomeBar = () => {
                     <Ionicons name="person-outline" size={30} color="black" />
                     <Text>Account</Text>
                 </View>
+                
             </View>
         </View>
     )
@@ -45,8 +46,8 @@ const styles = StyleSheet.create({
     container:{
         height:80,
         backgroundColor:'#fff',
-        borderTopWidth:2,
-        borderColor:'grey',
+        // borderTopWidth:2,
+        // borderColor:'grey',
         padding:10
 
     },

@@ -24,6 +24,7 @@ const Events = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Eventos</Text>
+      <View style={styles.flatlist}>
       <FlatList 
         data={data} 
         horizontal 
@@ -32,7 +33,8 @@ const Events = () => {
         bounces={false}
         renderItem={({ item }) => <Item item={item} />} 
         keyExtractor={(item, index) => index.toString()}
-      />
+        />
+        </View>
     </View>
   );
 };
@@ -52,9 +54,12 @@ const styles = StyleSheet.create({
   },
   image: {
     width: width - 32,
-    height: 200,
+    height: 185,
     resizeMode: 'cover',
   },
+  flatlist:{
+    
+  }
 });
 
 export default Events;
