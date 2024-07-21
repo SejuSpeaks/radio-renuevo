@@ -16,9 +16,11 @@ const HomeScreen = ({navigation:{navigate}}) => {
       <Events/>
     </View>
 
+
     <View style={styles.container}>
       <Radio/>
     </View>
+
 
     <View>
       <Text style={styles.heading}>Socials</Text>

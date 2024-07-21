@@ -33,12 +33,19 @@ const artistData = [
 
 
 const ArtistIcon = ({artist}) => {
+    //shorten artist names
+    let name;
+    if (artist.name.length > 18) {
+        name = artist.name.slice(0, 15) + '...';
+    }
+    else name = artist.name
+
     const navigation = useNavigation();
     return(
         <TouchableOpacity onPress={()=> navigation.navigate("ArtistProfile", artist)}>
             <View style={styles.artistContainer}>
                 <Image source={artist.profile_image} style={styles.image}/>
-                <Text>{artist.name}</Text>
+                <Text>{name}</Text>
             </View>
         </TouchableOpacity>
     )
@@ -47,7 +54,7 @@ const ArtistIcon = ({artist}) => {
 const Radio = () => {
     return (
         <View>
-            <Text style={styles.heading}>Presentadores</Text>
+            <Text style={styles.heading}>Radio</Text>
 
             <View style={styles.itemContainer}>
                 <FlatList 
@@ -61,11 +68,13 @@ const Radio = () => {
     )
 }
 
+/* add the idea of being able to put stories on your page */
+
 const styles = StyleSheet.create(
     {
         heading: {
             fontSize: 24,
-            padding:10,
+            paddingLeft:"5%",
             fontWeight: 'bold',
             marginBottom: 16,
           },

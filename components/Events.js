@@ -23,8 +23,11 @@ const Events = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Eventos</Text>
+      
       <View style={styles.flatlist}>
+
+      <Text style={styles.heading}>Eventos</Text>
+
       <FlatList 
         data={data} 
         horizontal 
@@ -34,6 +37,7 @@ const Events = () => {
         renderItem={({ item }) => <Item item={item} />} 
         keyExtractor={(item, index) => index.toString()}
         />
+        
         </View>
     </View>
   );
@@ -45,12 +49,13 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 24,
-    padding:10,
+    paddingLeft:'5%',
     fontWeight: 'bold',
     marginBottom: 16,
   },
   itemContainer: {
     marginBottom: 16,
+    width: width - 32,
   },
   image: {
     width: width - 32,

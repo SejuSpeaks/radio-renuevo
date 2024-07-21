@@ -12,9 +12,9 @@ const NavBar = () => {
                 <Image style={styles.image} source={require('../assets/radioLogo.png')} />
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate("Notifications")}>
+            {/* <TouchableOpacity onPress={() => navigation.navigate("Notifications")}>
                 <FontAwesome size={24} name="bell" />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
     );
 }
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
         height: 60, // Adjust the height as needed
     },
     image: {
-        height: 90,
-        width: 90,
+        height: 120,
+        width: 120,
     },
 });
 
