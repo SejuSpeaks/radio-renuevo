@@ -27,10 +27,10 @@ const ArtistProfile = ({route}) => {
                 <Image style={styles.programImage} source={artist.program}/>
             </View>
 
-            <View style={styles.container}>
+            {/* <View style={styles.container}>
                 <Text style={styles.heading}>About</Text>
                 <Text style={styles.p}>{artist.bio}</Text>
-            </View>
+            </View> */}
 
             <View style={styles.container}>
             <Text style={styles.heading}>Socials</Text>
@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
         height:200,
         width:"fit",
         borderRadius:5,
-    }
+    },
+
 })
 
 export default ArtistProfile;

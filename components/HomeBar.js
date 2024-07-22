@@ -20,14 +20,14 @@ const HomeBar = () => {
             <View style={styles.iconsContainer}>
                 <View >
                     <TouchableOpacity style={styles.iconBox} onPress={()=> navigateTo("Home") }>
-                    <Ionicons name={active === "Home" ? "home" : "home-outline"} size={30} color="black" />
+                    <Ionicons name={active === "Home" ? "home" : "home-outline"} size={25} color="black" />
                         <Text>Home</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View >
                     <TouchableOpacity style={styles.iconBox} onPress={()=> navigateTo("Live")}>
-                        <Ionicons name={active === "Live" ? "radio" : "radio-outline"} size={30} color="black" />
+                        <Ionicons name={active === "Live" ? "radio" : "radio-outline"} size={25} color="black" />
                         <Text>Live</Text>
                     </TouchableOpacity>
                 </View>

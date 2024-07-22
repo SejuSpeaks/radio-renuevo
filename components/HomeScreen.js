@@ -6,6 +6,7 @@ import Events from './Events';
 import Radio from './Radio';
 import Socials from './Socials';
 import HomeBar from './HomeBar';
+import DailyShows from './DailyShows';
 
 const HomeScreen = ({navigation:{navigate}}) => {
     return (
@@ -13,13 +14,20 @@ const HomeScreen = ({navigation:{navigate}}) => {
     <ScrollView >
     
     <View style={styles.container}>
-      <Events/>
-    </View>
-
-
-    <View style={styles.container}>
       <Radio/>
     </View>
+    
+    <View style={styles.container}>
+      <Events/>
+    </View>
+    
+
+    <View style={styles.container}>
+      <DailyShows/>
+    </View>
+
+
+
 
 
     <View>

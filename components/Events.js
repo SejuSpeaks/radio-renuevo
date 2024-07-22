@@ -26,7 +26,7 @@ const Events = () => {
       
       <View style={styles.flatlist}>
 
-      <Text style={styles.heading}>Eventos</Text>
+      <Text style={styles.heading}>Events</Text>
 
       <FlatList 
         data={data} 
