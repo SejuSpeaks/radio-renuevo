@@ -13,7 +13,8 @@ import NotificationsScreen from './components/NotificationsScreen'; // Adjust th
 import HomeBar from './components/HomeBar';
 import ArtistProfile from './components/ArtistProfile';
 import NavBar from './components/NavBar';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, StatusBar } from 'react-native';
+import MusicPlayer from './components/MusicPlayer';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1, backgroundColor:'white' }}>
+      <StatusBar barStyle="dark-content" />
       <NavigationContainer>
         <SafeAreaView>
           <NavBar/>
@@ -48,6 +50,7 @@ function App() {
         }}/>
         <Stack.Screen name="ArtistProfile" component={ArtistProfile} options={{headerShown:false}}/>
         </Stack.Navigator>
+        <MusicPlayer/>
         <HomeBar/>
       </NavigationContainer>
     </GestureHandlerRootView>
