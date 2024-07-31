@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View,Text,Image,StyleSheet, Button,TouchableOpacity,TouchableWithoutFeedback, } from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from "@react-navigation/native";
@@ -7,37 +7,36 @@ import { Audio } from "expo-av";
 const MusicPlayer = () => {
 
     const [playing,setPlaying] = useState(false)
-    const [sound, setSound] = useState();
+    const [radio, setRadio] = useState();
     const nav = useNavigation();
 
+    //if we click live button it fetches the stream again.
 
-    const playSound = async (streamUrl) => {
-        console.log('playing sound');
-        const { sound: newSound } = await Audio.Sound.createAsync(
-          { uri: streamUrl },
-          { shouldPlay: true }
-        );
-        setSound(newSound);
-        await newSound.playAsync();
-        setPlaying(true);
-      };
+    useEffect(() => {
+        const setupRadio = async () => {
+            const url = await fetchStreamUrl("https://us2.maindigitalstream.com:2199/tunein/renuevo.pls");
+            const { sound: newSound } = await Audio.Sound.createAsync(
+                { uri: url }
+            );
+            console.log('NEWSOUND', newSound);
+            setRadio(newSound);
+        };
+
+        setupRadio();
+    }, []);
+   
+    
 
     const changePlay = async () => {
+        //convert pls file into a url
         if (playing){
             console.log('stopping sound');
             setPlaying(false);
-          
+            await radio.pauseAsync();
         }
         else{
             setPlaying(true);
-            const url = await fetchStreamUrl("https://us2.maindigitalstream.com:2199/tunein/renuevo.pls")
-            console.log(url, 'THIS IS URL');
-            if(url){
-                playSound(url);
-            }
-            else{
-                console.log('failed to stream');
-            }
+            await radio.playAsync();
         }
     }
 
