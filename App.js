@@ -14,7 +14,7 @@ import HomeBar from './components/HomeBar';
 import ArtistProfile from './components/ArtistProfile';
 import NavBar from './components/NavBar';
 import { SafeAreaView, StatusBar } from 'react-native';
-import MusicPlayer from './components/MusicPlayer';
+import MiniPlayer from './components/MiniPlayer';
 
 const Stack = createStackNavigator();
 
@@ -50,7 +50,7 @@ function App() {
         }}/>
         <Stack.Screen name="ArtistProfile" component={ArtistProfile} options={{headerShown:false}}/>
         </Stack.Navigator>
-        <MusicPlayer/>
+        <MiniPlayer/>
         <HomeBar/>
       </NavigationContainer>
     </GestureHandlerRootView>
