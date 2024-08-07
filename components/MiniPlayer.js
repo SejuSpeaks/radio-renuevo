@@ -38,23 +38,24 @@ const MiniPlayer = () => {
 
 
     return (
-            <TouchableOpacity activeOpacity={1} style={styles.touchable} onPress={() => {
-                console.log('box');
-                nav.navigate("Live");
-            }}>
+            <TouchableOpacity  style={styles.touchable}>
+         
                 <View style={styles.container}>
-                    <View style={{ flexDirection: 'row', gap: 10, height: '100%' }}>
+
+                    <View style={{ flexDirection: 'row', gap: 10, height: '100%', }}>
                         <Image style={styles.image} source={require("../assets/radioLogo.png")} />
                         <View style={{ justifyContent: 'center' }}>
                             <Text style={styles.songTitle}>Radio Renuevo</Text>
                             <Text style={styles.artistName}>102.3FM</Text>
                         </View>
                     </View>
+
                     <View style={styles.audioButton}>
                         <TouchableOpacity onPress={changePlay}>
                             {playing === false ? <FontAwesome name='play' size={24} color={'black'} /> : <FontAwesome name='pause' size={24} color={'black'} />}
                         </TouchableOpacity>
                     </View>
+
                 </View>
             </TouchableOpacity>
     );
@@ -73,13 +74,6 @@ const fetchStreamUrl = async (url) => {
 };
 
 const styles = StyleSheet.create({
-    fullScreenContainer: {
-        position:"absolute",
-        top:'85%',
-        width: '100%',
-        height: '100%', // Make the fullScreenContainer cover the full screen
-        backgroundColor: 'blue',
-    },
     container: {
         backgroundColor: "#FFFF",
         flexDirection: "row",
@@ -95,12 +89,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     touchable: {
-        height: "7%",
+        height: "100%",
         zIndex: 0
     },
     image: {
         height: '100%',
-        width: 60,
+        padding:10,
+        width: '30%',
         backgroundColor: "pink"
     },
     artistName: {

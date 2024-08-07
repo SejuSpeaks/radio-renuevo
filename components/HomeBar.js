@@ -33,8 +33,10 @@ const HomeBar = () => {
                 </View>
 
                 <View  style={styles.iconBox}>
-                    <Ionicons name="person-outline" size={30} color="black" />
-                    <Text>Account</Text>
+                    <TouchableOpacity style={styles.iconBox} onPress={()=> navigateTo("MusicPlayer")}>
+                        <Ionicons name="person-outline" size={30} color="black" />
+                        <Text>Account</Text>
+                    </TouchableOpacity>
                 </View>
                 
             </View>
