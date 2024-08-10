@@ -1,5 +1,7 @@
 import { View,Text,StyleSheet } from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { Linking } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const socials = [
     {
@@ -12,7 +14,9 @@ const socials = [
             width:50,
             height:50,
             backgroundColor:"green"
-        })
+        }),
+        appUrl:'',
+        webUrl:'',
     },
     {
         name:"Facebook",
@@ -24,7 +28,10 @@ const socials = [
             width:50,
             height:50,
             backgroundColor:"blue"
-        })
+        }),
+        appUrl:'fb://profile/Renuevo102.3fm',
+        webUrl:'https://www.facebook.com/Renuevo102.3fm/',
+
     },
     {
         name:"Email",
@@ -36,11 +43,13 @@ const socials = [
             width:50,
             height:50,
             backgroundColor:"grey"
-        })
+        }),
+        appUrl:'googlegmail://co?to=renuevo1023@gmail.com',
+        webUrl:'mailto:renuevo1023@gmail.com',
     },
     {
         name:"Youtube",
-        icon:<FontAwesome name='youtube' size={24} color={'white'}/>,
+        icon:<FontAwesome  name='youtube' size={24} color={'white'}/>,
         styles: StyleSheet.create({
             justifyContent:'center',
             alignItems:'center',
@@ -48,16 +57,30 @@ const socials = [
             width:50,
             height:50,
             backgroundColor:"red"
-        })
+        }),
+        appUrl:'',
+        webUrl:'',
     },
         
 ]
 
+const goToLink = (appUrl, webUrl) => {
+    console.log('pressed')
+    Linking.canOpenURL(appUrl)
+    .then(supports => {
+        if(supports) return Linking.openURL(appUrl)
+        else return Linking.openURL(webUrl);
+    })
+    
+}
+
+
+
 const Icon = ({social}) => {
     return (
-    <View style={social.styles}>
+    <TouchableOpacity onPress={()=>goToLink(social.appUrl,social.webUrl)} style={social.styles}>
         {social.icon}
-    </View>
+    </TouchableOpacity>
     )
 }
 

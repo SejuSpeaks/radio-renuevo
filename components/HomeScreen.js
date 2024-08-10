@@ -8,9 +8,10 @@ import Socials from './Socials';
 import HomeBar from './HomeBar';
 import DailyShows from './DailyShows';
 
+
 const HomeScreen = ({navigation:{navigate}}) => {
     return (
-    <SafeAreaView style={{backgroundColor:'white', flex:1}}>
+    <SafeAreaView style={styles.parent}>
     <ScrollView >
     
     <View style={styles.container}>
@@ -35,17 +36,25 @@ const HomeScreen = ({navigation:{navigate}}) => {
       <Socials/>
     </View>
 
-    </ScrollView>
+    <View style={styles.footer}>
+     
+    </View>
 
-    {/* <View style={styles.homeBar}>
-      <HomeBar/>
-    </View> */}
+    </ScrollView>
     
    </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
+  parent:{
+    flex:1,
+    backgroundColor:'white',
+  },
+  footer:{
+    padding:30,
+    marginBottom:30,
+  },
   container:{
     marginBottom:30,
   },

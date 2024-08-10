@@ -6,39 +6,11 @@ import { Audio } from "expo-av";
 
 const { height } = Dimensions.get('window');
 
-const MiniPlayer = () => {
-    const [playing, setPlaying] = useState(false);
-    const [radio, setRadio] = useState();
+const MiniPlayer = ({playing, setPlaying, changePlay}) => {
     const nav = useNavigation();
-    const pan = useRef(new Animated.ValueXY()).current;
-
-    useEffect(() => {
-        const setupRadio = async () => {
-            const url = await fetchStreamUrl("https://us2.maindigitalstream.com:2199/tunein/renuevo.pls");
-            const { sound: newSound } = await Audio.Sound.createAsync(
-                { uri: url }
-            );
-            console.log('NEWSOUND', newSound);
-            setRadio(newSound);
-        };
-
-        setupRadio();
-    }, []);
-
-    const changePlay = async () => {
-        if (playing) {
-            console.log('stopping sound');
-            setPlaying(false);
-            await radio.pauseAsync();
-        } else {
-            setPlaying(true);
-            await radio.playAsync();
-        }
-    };
-
 
     return (
-            <TouchableOpacity  style={styles.touchable}>
+            <View  style={styles.touchable}>
          
                 <View style={styles.container}>
 
@@ -57,21 +29,21 @@ const MiniPlayer = () => {
                     </View>
 
                 </View>
-            </TouchableOpacity>
+            </View>
     );
 };
 
-const fetchStreamUrl = async (url) => {
-    try {
-        const response = await fetch(url);
-        const text = await response.text();
-        const matches = text.match(/File1=(.+)/);
-        return matches ? matches[1].trim() : null;
-    } catch (error) {
-        console.error('Error fetching url', error);
-        return null;
-    }
-};
+// const fetchStreamUrl = async (url) => {
+//     try {
+//         const response = await fetch(url);
+//         const text = await response.text();
+//         const matches = text.match(/File1=(.+)/);
+//         return matches ? matches[1].trim() : null;
+//     } catch (error) {
+//         console.error('Error fetching url', error);
+//         return null;
+//     }
+// };
 
 const styles = StyleSheet.create({
     container: {

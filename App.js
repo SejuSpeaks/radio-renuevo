@@ -54,8 +54,6 @@ function App() {
         <Stack.Screen name="MusicPlayer" component={MusicPlayer} options={{headerShown:false}}/> 
         { /*take off later ^^^^^^^^^^^^^^^^^*/}
         </Stack.Navigator>
-        {/* <MiniPlayer/> */}
-        {/* <HomeBar/> */}
         <BottomTab/>
       </NavigationContainer>
     </GestureHandlerRootView>

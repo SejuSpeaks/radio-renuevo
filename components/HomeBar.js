@@ -26,18 +26,18 @@ const HomeBar = () => {
                 </View>
 
                 <View >
-                    <TouchableOpacity style={styles.iconBox} onPress={()=> navigateTo("Live")}>
+                    <TouchableOpacity style={styles.iconBox}>
                         <Ionicons name={active === "Live" ? "radio" : "radio-outline"} size={25} color="black" />
                         <Text>Live</Text>
                     </TouchableOpacity>
                 </View>
 
-                <View  style={styles.iconBox}>
+                {/* <View  style={styles.iconBox}>
                     <TouchableOpacity style={styles.iconBox} onPress={()=> navigateTo("MusicPlayer")}>
                         <Ionicons name="person-outline" size={30} color="black" />
                         <Text>Account</Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
                 
             </View>
         </View>
