@@ -17,7 +17,8 @@
         "UIBackgroundModes": [
           "audio"
         ]
-      }
+      },
+      "bundleIdentifier": "radiorenuevo"
     },
     "android": {
       "adaptiveIcon": {
@@ -30,6 +31,11 @@
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "1b8c2cc6-acbc-42d9-be1c-02ed2412dfc1"
+      }
+    }
   }
 }

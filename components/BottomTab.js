@@ -26,8 +26,10 @@ const springConfig = {
 const BottomTab = () => {
   const translationY = useSharedValue(SNAP_BOTTOM);
   const isMinimized = useSharedValue(1);
+  const [activeTab, setActiveTab] = useState("Home")
   const [playing, setPlaying] = useState(false);
   const [radio, setRadio] = useState();
+
 
   useEffect(() => {
     const setupRadio = async () => {
@@ -72,7 +74,7 @@ const changePlay = async () => {
       if (event.velocityY > 0) {
         translationY.value = withSpring(SNAP_BOTTOM,springConfig);
         isMinimized.value = 1
-      } else {
+    } else {
         translationY.value = withSpring(SNAP_TOP,springConfig);
         isMinimized.value = 0
       }
@@ -86,10 +88,12 @@ const changePlay = async () => {
   });
 
   const minimizedStyle = useAnimatedStyle(()=>{
-    return {
-        opacity: isMinimized.value
-    }
-  })
+    console.log(isMinimized.value)
+        return {
+            opacity: isMinimized.value
+        }
+    }) 
+
 
   return (
     <>
@@ -112,9 +116,15 @@ const changePlay = async () => {
         </Animated.View>
       </PanGestureHandler>
 
-      <View style={[{ transform: [{ translateY: 0 }] }]}>
-        <HomeBar />
-      </View>
+      <Animated.View style={[minimizedStyle,{ transform: [{ translateY: 0 }] }]}>
+        <HomeBar
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        isMinimized={isMinimized}
+        translationY={translationY}
+        SNAP_BOTTOM={SNAP_BOTTOM}    
+            />
+      </Animated.View>
     </>
   );
 };

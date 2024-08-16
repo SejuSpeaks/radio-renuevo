@@ -4,7 +4,7 @@ import { View,Text,Image,FlatList, StyleSheet, Dimensions } from "react-native";
 const {width} = Dimensions.get('window')
 
 const shows = [
-    {image: require('../assets/marbelis.png')},
+    { image: require("../assets/radioLogo.png") },
     {image:require('../assets/titoritmo.jpg')},
 ]
 

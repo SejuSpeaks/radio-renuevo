@@ -10,7 +10,7 @@ const socials = [
         styles: StyleSheet.create({
             justifyContent:'center',
             alignItems:'center',
-            borderRadius:100,
+            borderRadius:10,
             width:50,
             height:50,
             backgroundColor:"green"
@@ -24,7 +24,7 @@ const socials = [
         styles: StyleSheet.create({
             justifyContent:'center',
             alignItems:'center',
-            borderRadius:100,
+            borderRadius:10,
             width:50,
             height:50,
             backgroundColor:"blue"
@@ -39,7 +39,7 @@ const socials = [
         styles: StyleSheet.create({
             justifyContent:'center',
             alignItems:'center',
-            borderRadius:100,
+            borderRadius:10,
             width:50,
             height:50,
             backgroundColor:"grey"
@@ -53,7 +53,7 @@ const socials = [
         styles: StyleSheet.create({
             justifyContent:'center',
             alignItems:'center',
-            borderRadius:100,
+            borderRadius:10,
             width:50,
             height:50,
             backgroundColor:"red"

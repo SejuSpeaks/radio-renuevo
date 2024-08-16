@@ -5,29 +5,38 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 
-const HomeBar = () => {
-    const [active, setActive] = useState("Home");
+const HomeBar = ({activeTab, setActiveTab, isMinimized, translationY, SNAP_BOTTOM}) => {
     const navigation = useNavigation();
 
     const navigateTo = (tab) => {
-        setActive(tab)
-        navigation.navigate(tab)
+        setActiveTab(tab)
+
+        if(tab !== "Live"){
+            navigation.navigate(tab)
+            isMinimized.value = 1
+            translationY.value = SNAP_BOTTOM
+        }
+        else{
+            translationY.value = 0
+            isMinimized.value = 0
+        }
         return
     }
+
 
     return (
         <View style={styles.container} >
             <View style={styles.iconsContainer}>
                 <View >
                     <TouchableOpacity style={styles.iconBox} onPress={()=> navigateTo("Home") }>
-                    <Ionicons name={active === "Home" ? "home" : "home-outline"} size={25} color="black" />
+                    <Ionicons name={activeTab === "Home" ? "home" : "home-outline"} size={25} color="black" />
                         <Text>Home</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View >
-                    <TouchableOpacity style={styles.iconBox}>
-                        <Ionicons name={active === "Live" ? "radio" : "radio-outline"} size={25} color="black" />
+                    <TouchableOpacity style={styles.iconBox} onPress={()=> navigateTo("Live")}>
+                        <Ionicons name={activeTab === "Live" ? "radio" : "radio-outline"} size={25} color="black" />
                         <Text>Live</Text>
                     </TouchableOpacity>
                 </View>
