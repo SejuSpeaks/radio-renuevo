@@ -54,7 +54,6 @@ const BottomTab = () => {
 
 const changePlay = async () => {
     if (playing) {
-        console.log('stopping sound');
         setPlaying(false);
         await radio.pauseAsync();
     } else {
@@ -88,7 +87,6 @@ const changePlay = async () => {
   });
 
   const minimizedStyle = useAnimatedStyle(()=>{
-    console.log(isMinimized.value)
         return {
             opacity: isMinimized.value
         }

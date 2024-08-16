@@ -6,12 +6,14 @@ const {width} = Dimensions.get('window')
 const shows = [
     { image: require("../assets/radioLogo.png") },
     {image:require('../assets/titoritmo.jpg')},
+    {image:require('../assets/events/Image.png')},
 ]
 
 const ShowContainer = ({show}) => {
     return (
         <View style={styles.container}>
         <Image style={styles.image} source={show.image}/>
+        <Text>Show</Text>
         </View>
     )
 }
@@ -19,8 +21,9 @@ const ShowContainer = ({show}) => {
 const DailyShows = () => {
     return (
         <View>
-            <Text style={styles.heading}>Daily Shows</Text>
+            <Text style={styles.heading}>Shows</Text>
             <FlatList
+            style={styles.listContainer}
             data={shows}
             renderItem={({item})=> <ShowContainer show={item}/>}
             horizontal
@@ -33,9 +36,17 @@ const DailyShows = () => {
 }
 
 const styles = StyleSheet.create({
+    listContainer:{
+        gap:5,
+        display:'flex',
+        flexDirection:'row',
+    },
+
     container:{
         justifyContent:"center",
-        alignItems:'center'
+        alignItems:'center',
+        marginLeft:10,
+        
     },
     heading: {
         fontSize: 24,
@@ -44,8 +55,9 @@ const styles = StyleSheet.create({
         marginBottom: 16,
       },
       image:{
-        height:320,
-        width: width ,
+        height:150,
+        borderRadius: 5,
+        width: 150,
         resizeMode:'cover'
 
       }

@@ -35,8 +35,8 @@ const artistData = [
 const ArtistIcon = ({artist}) => {
     //shorten artist names
     let name;
-    if (artist.name.length > 18) {
-        name = artist.name.slice(0, 15) + '...';
+    if (artist.name.length > 20) {
+        name = artist.name.slice(0, 20) + '...';
     }
     else name = artist.name
 
@@ -54,7 +54,7 @@ const ArtistIcon = ({artist}) => {
 const Radio = () => {
     return (
         <View>
-            <Text style={styles.heading}>Radio</Text>
+            <Text style={styles.heading}>Hosts</Text>
 
             <View style={styles.itemContainer}>
                 <FlatList 
@@ -79,7 +79,7 @@ const styles = StyleSheet.create(
             marginBottom: 16,
           },
         image:{
-            borderRadius: '100%',
+            borderRadius: 5,
             height: 150,
             width:150,
         },

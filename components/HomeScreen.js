@@ -19,13 +19,14 @@ const HomeScreen = ({navigation:{navigate}}) => {
     </View>
     
     <View style={styles.container}>
+      <DailyShows/>
+    </View>
+    
+    <View style={styles.container}>
       <Events/>
     </View>
     
 
-    <View style={styles.container}>
-      <DailyShows/>
-    </View>
 
 
 
