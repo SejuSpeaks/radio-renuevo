@@ -23,20 +23,21 @@ const ArtistProfile = ({route}) => {
             </View>
 
             <View style={styles.container}>
+                <Text style={styles.heading}>About</Text>
+                <Text style={styles.p}>{artist.bio}</Text>
+            </View>
+
+            <View style={styles.container}>
                 <Text style={styles.heading}>Programa </Text>
                 <Image style={styles.programImage} source={artist.program}/>
             </View>
-
-            {/* <View style={styles.container}>
-                <Text style={styles.heading}>About</Text>
-                <Text style={styles.p}>{artist.bio}</Text>
-            </View> */}
 
             <View style={styles.container}>
             <Text style={styles.heading}>Socials</Text>
                 <Socials/>
             </View>
 
+            <View style={styles.footer}></View>
             </ScrollView>
         </SafeAreaView>
     )
@@ -44,7 +45,7 @@ const ArtistProfile = ({route}) => {
 
 const styles = StyleSheet.create({
     artistHeader:{
-        marginBottom:0,
+        marginBottom:20,
     },
     center:{
        gap:30,
@@ -53,14 +54,19 @@ const styles = StyleSheet.create({
        
 
     },
+    footer:{
+        padding:30,
+        marginBottom:30,
+      },
     container:{
         padding:15,
-        backgroundColor: 'rgba(100, 100, 100, 0.1)',
+        // backgroundColor: 'rgba(100, 100, 100, 0.1)',
         
     },
     heading:{
         fontSize:25,
-        fontWeight:"bold",
+        fontWeight:"500",
+        fontFamily:"Roboto",
         marginBottom:20,
     },
     artistName:{
@@ -86,7 +92,8 @@ const styles = StyleSheet.create({
     },
     p:{
         textAlign:"left",
-        fontFamily:"Inter"
+        fontFamily:"Inter",
+        fontSize:16
 
     },
     programImage:{

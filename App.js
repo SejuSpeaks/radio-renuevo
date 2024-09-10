@@ -19,6 +19,7 @@ import MusicPlayer from './components/MusicPlayer';
 import BottomTab from './components/BottomTab';
 import Loading from './components/Loading';
 import { Suspense } from 'react';
+import ShowInformation from './components/ShowInformation';
 
 const Stack = createStackNavigator();
 
@@ -46,18 +47,19 @@ function App() {
             <NavBar/>
           </SafeAreaView>
           <Stack.Navigator initialRouteName='Home'>
-          <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
-          <Stack.Screen name='Notifications' component={NotificationsScreen} options={{ headerShown: false }}/>
-          <Stack.Screen name='Live' component={Live} options={{headerShown:false, 
-            transitionSpec: {
-              open: { animation: 'timing', config: { duration: 0 } },
-              close: { animation: 'timing', config: { duration: 0 } },
-              },
-            }}/>
-          <Stack.Screen name="ArtistProfile" component={ArtistProfile} options={{headerShown:false}}/>
-          <Stack.Screen name="MusicPlayer" component={MusicPlayer} options={{headerShown:false}}/> 
-          { /*take off later ^^^^^^^^^^^^^^^^^*/}
+              <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
+              <Stack.Screen name='Notifications' component={NotificationsScreen} options={{ headerShown: false }}/>
+              <Stack.Screen name="ShowDetails" component={ShowInformation} options={{headerShown:false}}/>
+              <Stack.Screen name='Live' component={Live} options={{headerShown:false, 
+                transitionSpec: {
+                  open: { animation: 'timing', config: { duration: 0 } },
+                  close: { animation: 'timing', config: { duration: 0 } },
+                  },
+                }}/>
+              <Stack.Screen name="ArtistProfile" component={ArtistProfile} options={{headerShown:false}}/>
+              <Stack.Screen name="MusicPlayer" component={MusicPlayer} options={{headerShown:false}}/>
           </Stack.Navigator>
+
           <BottomTab/>
         </NavigationContainer>
       </GestureHandlerRootView>

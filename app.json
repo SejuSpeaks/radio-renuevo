@@ -16,6 +16,9 @@
       "infoPlist": {
         "UIBackgroundModes": [
           "audio"
+        ],
+        "LSApplicationQueriesSchemes":[
+          "fb","youtube"
         ]
       },
       "bundleIdentifier": "radiorenuevo"

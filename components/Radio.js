@@ -12,12 +12,12 @@ const artistData = [
         bio:"La Pastora [Nombre], una apasionada líder espiritual y comunicadora, ha dedicado su vida a compartir el mensaje de esperanza y amor de Cristo a través de su ministerio y su programa de radio. Con un corazón ferviente por servir a su comunidad, [Nombre] ha sido una voz influyente y guía espiritual para innumerables personas.",
         program:require("../assets/ivelisse.gif"),
     },
-    {
-        name:"El Capellan",
-        profile_image: require("../assets/capellan.jpg"),
-        bio:"Integer at egestas arcu. Integer a condimentum orci. Proin enim felis, gravida dignissim posuere sed, tincidunt vel purus. Vivamus vitae venenatis ipsum. Phasellus bibendum libero sed enim egestas sagittis. Vivamus porttitor ante id velit aliquam, vel ornare metus dictum. Vivamus scelerisque ligula ac nunc pretium posuere. Cras finibus enim non lectus dictum, ac suscipit leo vulputate. Aenean dignissim ac ligula eu aliquam. Quisque eget nisl scelerisque, maximus orci ac, gravida tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque posuere laoreet augue, vitae facilisis velit egestas ac. Cras id risus pharetra, dictum tellus viverra, egestas sem. Vivamus nec porta tellus.",
-        program:require("../assets/events/Image.png"),
-    },
+    // {
+    //     name:"El Capellan",
+    //     profile_image: require("../assets/capellan.jpg"),
+    //     bio:"Integer at egestas arcu. Integer a condimentum orci. Proin enim felis, gravida dignissim posuere sed, tincidunt vel purus. Vivamus vitae venenatis ipsum. Phasellus bibendum libero sed enim egestas sagittis. Vivamus porttitor ante id velit aliquam, vel ornare metus dictum. Vivamus scelerisque ligula ac nunc pretium posuere. Cras finibus enim non lectus dictum, ac suscipit leo vulputate. Aenean dignissim ac ligula eu aliquam. Quisque eget nisl scelerisque, maximus orci ac, gravida tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque posuere laoreet augue, vitae facilisis velit egestas ac. Cras id risus pharetra, dictum tellus viverra, egestas sem. Vivamus nec porta tellus.",
+    //     program:require("../assets/events/Image.png"),
+    // },
     {
         name:"Marbelis Candela",
         profile_image: require("../assets/marbelis.png"),

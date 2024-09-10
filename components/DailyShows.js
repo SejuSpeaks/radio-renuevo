@@ -1,19 +1,20 @@
 import { View,Text,Image,FlatList, StyleSheet, Dimensions } from "react-native";
-
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
+import shows from "../data/shows";
 
 const {width} = Dimensions.get('window')
 
-const shows = [
-    { image: require("../assets/radioLogo.png") },
-    {image:require('../assets/titoritmo.jpg')},
-    {image:require('../assets/events/Image.png')},
-]
+
 
 const ShowContainer = ({show}) => {
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
-        <Image style={styles.image} source={show.image}/>
-        <Text>Show</Text>
+            <TouchableOpacity onPress={()=> navigation.navigate("ShowDetails", show)}>
+                <Image style={styles.image} source={show.image}/>
+                <Text>{show.name}</Text>
+            </TouchableOpacity>
         </View>
     )
 }
