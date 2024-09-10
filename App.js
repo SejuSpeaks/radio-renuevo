@@ -17,46 +17,51 @@ import { SafeAreaView, StatusBar } from 'react-native';
 import MiniPlayer from './components/MiniPlayer';
 import MusicPlayer from './components/MusicPlayer';
 import BottomTab from './components/BottomTab';
+import Loading from './components/Loading';
+import { Suspense } from 'react';
 
 const Stack = createStackNavigator();
 
-SplashScreen.preventAutoHideAsync();
+// SplashScreen.preventAutoHideAsync();
 
 function App() {
   //loading the fonts into the app
-  const [loaded,error] = useFonts({
-    'Gotahm-Bold': require('./assets/fonts/Gotham-Font/Gotham-Bold.otf'),
-  })
+  // const [loaded,error] = useFonts({
+  //   'Gotahm-Bold': require('./assets/fonts/Gotham-Font/Gotham-Bold.otf'),
+  // })
 
-  useEffect(()=>{
-    if(loaded || error) SplashScreen.hideAsync()
-  },[loaded,error])
+  // useEffect(()=>{
+  //   if(loaded || error) SplashScreen.hideAsync()
+  // },[loaded,error])
 
-  if (!loaded && !error) return null;
+  // if (!loaded && !error) return SplashScreen.hideAsync();
+
 
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor:'white' }}>
-      <StatusBar barStyle="dark-content" />
-      <NavigationContainer>
-        <SafeAreaView>
-          <NavBar/>
-        </SafeAreaView>
-        <Stack.Navigator initialRouteName='Home'>
-        <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen name='Notifications' component={NotificationsScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name='Live' component={Live} options={{headerShown:false, 
-           transitionSpec: {
-            open: { animation: 'timing', config: { duration: 0 } },
-            close: { animation: 'timing', config: { duration: 0 } },
-          },
-        }}/>
-        <Stack.Screen name="ArtistProfile" component={ArtistProfile} options={{headerShown:false}}/>
-        <Stack.Screen name="MusicPlayer" component={MusicPlayer} options={{headerShown:false}}/> 
-        { /*take off later ^^^^^^^^^^^^^^^^^*/}
-        </Stack.Navigator>
-        <BottomTab/>
-      </NavigationContainer>
-    </GestureHandlerRootView>
+    <Suspense fallback={<Loading/>}>
+      <GestureHandlerRootView style={{ flex: 1, backgroundColor:'white' }}>
+        <StatusBar barStyle="dark-content" />
+        <NavigationContainer>
+          <SafeAreaView>
+            <NavBar/>
+          </SafeAreaView>
+          <Stack.Navigator initialRouteName='Home'>
+          <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
+          <Stack.Screen name='Notifications' component={NotificationsScreen} options={{ headerShown: false }}/>
+          <Stack.Screen name='Live' component={Live} options={{headerShown:false, 
+            transitionSpec: {
+              open: { animation: 'timing', config: { duration: 0 } },
+              close: { animation: 'timing', config: { duration: 0 } },
+              },
+            }}/>
+          <Stack.Screen name="ArtistProfile" component={ArtistProfile} options={{headerShown:false}}/>
+          <Stack.Screen name="MusicPlayer" component={MusicPlayer} options={{headerShown:false}}/> 
+          { /*take off later ^^^^^^^^^^^^^^^^^*/}
+          </Stack.Navigator>
+          <BottomTab/>
+        </NavigationContainer>
+      </GestureHandlerRootView>
+    </Suspense>
   );
 }
 

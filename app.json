@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "app",
+    "name": "Radio Renuevo",
     "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/radioLogo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/radioLogo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -36,6 +36,12 @@
       "eas": {
         "projectId": "1b8c2cc6-acbc-42d9-be1c-02ed2412dfc1"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/1b8c2cc6-acbc-42d9-be1c-02ed2412dfc1"
     }
   }
 }
