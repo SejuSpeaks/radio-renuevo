@@ -13,7 +13,6 @@ const ArtistProfile = ({route}) => {
     return (
         <SafeAreaView style={{backgroundColor:"white", flex:1, }}>
             <ScrollView>
-                
             <View style={styles.artistHeader}>
                 <View style={styles.center}>
                     <Image style={styles.image} source={artist.profile_image}/>
@@ -21,6 +20,7 @@ const ArtistProfile = ({route}) => {
                 </View>
 
             </View>
+              
 
             <View style={styles.container}>
                 <Text style={styles.heading}>About</Text>
@@ -33,9 +33,8 @@ const ArtistProfile = ({route}) => {
             </View>
 
             <View style={styles.container}>
-            <Text style={styles.heading}>Socials</Text>
-                <Socials/>
-            </View>
+                <Socials socials={artist.socials}/>
+            </View> 
 
             <View style={styles.footer}></View>
             </ScrollView>

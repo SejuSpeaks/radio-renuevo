@@ -32,7 +32,7 @@ const MusicPlayer = ({onPress, changePlay, playing, setPlaying}) => {
         </View>
 
 
-        <Image source={require("../assets/titoritmo.jpg")} style={styles.cover} />
+        <Image source={require("../assets/radioGradient.png")} style={styles.cover} />
 
         <View style={styles.metadata}>
             <View>

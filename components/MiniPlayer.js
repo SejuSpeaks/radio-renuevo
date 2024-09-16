@@ -15,7 +15,7 @@ const MiniPlayer = ({playing, setPlaying, changePlay}) => {
                 <View style={styles.container}>
 
                     <View style={{ flexDirection: 'row', gap: 10, height: '100%', }}>
-                        <Image style={styles.image} source={require("../assets/radioLogo.png")} />
+                        <Image style={styles.image} source={require("../assets/radioGradient.png")} />
                         <View style={{ justifyContent: 'center' }}>
                             <Text style={styles.songTitle}>Radio Renuevo</Text>
                             <Text style={styles.artistName}>102.3FM</Text>

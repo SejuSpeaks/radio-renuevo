@@ -2,7 +2,7 @@ import { View,Text, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     firstWord:{
-        color:'pink',
+        color:'#FC81C9',
         fontSize:48,
         fontWeight:'600'
     },
@@ -21,9 +21,8 @@ changeTitleColor = (title) => {
 const formattedTitle = firstWord + " " + restOfTitle;
 
     return (
-        <View style={{flexDirection:'row'}}>
-            <Text style={styles.firstWord}>{firstWord} </Text>
-            <Text style={styles.restOfTitle}>{restOfTitle}</Text>
+        <View style={{marginBottom:20, marginTop:20}}>
+            <Text style={styles.firstWord}>{firstWord} <Text style={styles.restOfTitle}>{restOfTitle}</Text> </Text>
         </View>
     );
 }
