@@ -2,22 +2,23 @@
 import { View, Image, Text, ScrollView, StyleSheet,Dimensions } from "react-native";
 const {width, height} = Dimensions.get('window')
 import Socials from "./Socials";
+import { LinearGradient } from "expo-linear-gradient";
 
 import changeTitleColor from "../util/changeTitleColor";
+import socials from "../data/radioSocials";
 
 const ShowInformation = ({route}) => {
     const show = route.params;
-    console.log(show.time);
     return (
         <ScrollView style={{backgroundColor:'white'}}>
             <View>
                 <View style={styles.imageParent}>
                     <Image source={show.image} style={styles.image}/>
-                    <View style={styles.circle}>
-                        <Text style={styles.showTime}>
-                            {show.time}
-                        </Text>
-                    </View>
+                    <LinearGradient colors={["#00B3FF","#FF2EA1"]} style={styles.circle}>
+                         <Text style={styles.showTime}>
+                             {show.time}
+                         </Text>
+                    </LinearGradient>
 
                 </View>
 
@@ -35,7 +36,7 @@ const ShowInformation = ({route}) => {
                 <View style={styles.bar}></View>
             </View>
 
-            <View>
+            <View style={styles.socialsContainer}>
                 <Socials socials={show.socials}/>
             </View>
 
@@ -48,6 +49,10 @@ const styles = StyleSheet.create({
     p:{
         fontSize:18,
         textAlign:'left'
+    },
+    socialsContainer:{
+        marginTop:20,
+        paddingLeft:10
     },
     bar:{
         width:3,

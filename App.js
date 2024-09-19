@@ -9,7 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import HomeScreen from './components/HomeScreen'; 
 import Live from './components/Live';
-import NotificationsScreen from './components/NotificationsScreen'; // Adjust the path as necessary
+import NotificationsScreen from './components/NotificationsScreen';
 import HomeBar from './components/HomeBar';
 import ArtistProfile from './components/ArtistProfile';
 import NavBar from './components/NavBar';

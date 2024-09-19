@@ -1,7 +1,8 @@
-import { View,Text,StyleSheet } from "react-native";
+import { View,Text,StyleSheet} from "react-native";
 import { Linking } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { LinearGradient } from "expo-linear-gradient";
 
 const goToLink = (appUrl, webUrl) => {
     console.log('pressed')
@@ -18,9 +19,11 @@ const goToLink = (appUrl, webUrl) => {
 const Icon = ({social}) => {
     return (
     <TouchableOpacity onPress={()=>goToLink(social.appUrl,social.webUrl)} style={social.styles}>
-        <Text>
-            <FontAwesome  name={social.icon.name} size={social.icon.size} color={social.icon.color}/>
-        </Text>
+        <LinearGradient colors={social.linearColors} style={social.styles}>
+            <Text>
+                <FontAwesome  name={social.icon.name} size={social.icon.size} color={social.icon.color}/>
+            </Text>
+        </LinearGradient>
     </TouchableOpacity>
     )
 }

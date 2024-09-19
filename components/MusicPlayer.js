@@ -1,13 +1,22 @@
 import React, { useRef } from 'react';
 import { Animated, PanResponder, View, Dimensions, StyleSheet, SafeAreaView, Text,Image } from 'react-native';
 import { LinearGradient } from "expo-linear-gradient";
+import { withSpring, runOnJS } from 'react-native-reanimated';
 import { RectButton } from "react-native-gesture-handler";
 import { AntDesign, Feather as Icon } from "@expo/vector-icons";
 const { height, width } = Dimensions.get('window');
 
 
 
-const MusicPlayer = ({onPress, changePlay, playing, setPlaying}) => {
+const MusicPlayer = ({onPress, changePlay, playing, setPlaying, translationY, isMinimized, SNAP_BOTTOM, springConfig, setActiveTab}) => {
+
+  const snapBottom = () => {
+      translationY.value = withSpring(SNAP_BOTTOM,springConfig);
+      isMinimized.value = 1
+      runOnJS(setActiveTab)("Home")
+      return;
+  }
+
    return (
     <>
         <SafeAreaView style={styles.root}>
@@ -21,7 +30,7 @@ const MusicPlayer = ({onPress, changePlay, playing, setPlaying}) => {
         <View style={styles.container}>
 
         <View style={styles.header}>
-          <RectButton style={styles.button} {...{ onPress }}>
+          <RectButton style={styles.button} onPress={()=>snapBottom()}>
             <Icon name="chevron-down" color="black" size={34} />
           </RectButton>
           <Text style={styles.title}>Radio Renuevo</Text>

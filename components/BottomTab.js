@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Dimensions, View, StyleSheet } from 'react-native';
 import { PanGestureHandler } from 'react-native-gesture-handler';
-import Animated, { useSharedValue, useAnimatedStyle, useAnimatedGestureHandler, withSpring } from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, useAnimatedGestureHandler, withSpring, runOnJS } from 'react-native-reanimated';
 import { Audio } from "expo-av";
 
 import MusicPlayer from './MusicPlayer';
@@ -29,27 +29,39 @@ const BottomTab = () => {
   const [activeTab, setActiveTab] = useState("Home")
   const [playing, setPlaying] = useState(false);
   const [radio, setRadio] = useState();
-
+  const previousTabRef = useRef(activeTab);
 
   useEffect(() => {
     const setupRadio = async () => {
-
-        // await Audio.setAudioModeAsync({
-        //     staysActiveInBackground: true,
-        //     playsInSilentModeIOS: true,
-        // })
-
-        const url = await fetchStreamUrl("https://us2.maindigitalstream.com:2199/tunein/renuevo.pls");
+      try {
+        // You can uncomment this if necessary
+        await Audio.setAudioModeAsync({
+          staysActiveInBackground: true,
+          playsInSilentModeIOS: true,
+        });
+        const url = "https://us2.maindigitalstream.com/ssl/7425";
+        console.log('Fetched URL:', url);
+  
+        // Check if the URL is working directly
         const { sound: newSound } = await Audio.Sound.createAsync(
-            { uri: url }
+          { uri: url }
         );
-
-
+  
+        console.log('newSound created successfully:');  // success if it's created
+  
+        // Set the radio state
         setRadio(newSound);
+  
+      } catch (error) {
+        console.error('Error creating sound object:', error);  // Log the error
+      }
     };
-
+  
     setupRadio();
-}, []);
+  }, []);
+  
+  
+
 
 
 const changePlay = async () => {
@@ -70,13 +82,20 @@ const changePlay = async () => {
       translationY.value = ctx.startY + event.translationY;
     },
     onEnd: (event) => {
-      if (event.velocityY > 0) {
+      //if swiping down from live tab
+      if(activeTab === 'Live' && event.velocityY >! 0){
+        translationY.value = withSpring(SNAP_BOTTOM,springConfig);
+        isMinimized.value = 1
+        runOnJS(setActiveTab)(previousTabRef.current)
+      }
+      else if (event.velocityY > 0) {
         translationY.value = withSpring(SNAP_BOTTOM,springConfig);
         isMinimized.value = 1
     } else {
         translationY.value = withSpring(SNAP_TOP,springConfig);
         isMinimized.value = 0
       }
+      
     },
   });
 
@@ -97,7 +116,16 @@ const changePlay = async () => {
     <>
       <PanGestureHandler onGestureEvent={gestureHandler}>
         <Animated.View style={[styles.MusicPlayerSheet, animatedStyle]}>
-          <MusicPlayer changePlay={changePlay} playing={playing} setPlaying={setPlaying} />
+          <MusicPlayer
+           changePlay={changePlay}
+           playing={playing}
+           setPlaying={setPlaying}
+           translationY={translationY}
+           isMinimized={isMinimized}
+           SNAP_BOTTOM={SNAP_BOTTOM}
+           springConfig={springConfig}
+           setActiveTab={setActiveTab}
+            />
           <Animated.View
             style={[{
               position: 'absolute',
@@ -120,7 +148,8 @@ const changePlay = async () => {
         setActiveTab={setActiveTab}
         isMinimized={isMinimized}
         translationY={translationY}
-        SNAP_BOTTOM={SNAP_BOTTOM}    
+        SNAP_BOTTOM={SNAP_BOTTOM}
+        springConfig={springConfig}    
             />
       </Animated.View>
     </>
@@ -145,9 +174,13 @@ const styles = StyleSheet.create({
   },
 });
 
+
+//this is incase a pls file is used for the stream .
 const fetchStreamUrl = async (url) => {
+  console.log('functin url', url)
     try {
-        const response = await fetch(url);
+      const response = await fetch(url);
+      console.log('rseponse status', response.status)
         const text = await response.text();
         const matches = text.match(/File1=(.+)/);
         return matches ? matches[1].trim() : null;

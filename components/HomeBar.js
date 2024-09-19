@@ -1,11 +1,12 @@
 import { View,Text, StyleSheet} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { withSpring } from "react-native-reanimated";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 
-const HomeBar = ({activeTab, setActiveTab, isMinimized, translationY, SNAP_BOTTOM}) => {
+const HomeBar = ({activeTab, setActiveTab, isMinimized, translationY, SNAP_BOTTOM, springConfig}) => {
     const navigation = useNavigation();
 
     const navigateTo = (tab) => {
@@ -13,11 +14,9 @@ const HomeBar = ({activeTab, setActiveTab, isMinimized, translationY, SNAP_BOTTO
 
         if(tab !== "Live"){
             navigation.navigate(tab)
-            isMinimized.value = 1
-            translationY.value = SNAP_BOTTOM
         }
         else{
-            translationY.value = 0
+            translationY.value = withSpring(0,springConfig)
             isMinimized.value = 0
         }
         return

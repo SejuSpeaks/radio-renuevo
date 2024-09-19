@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
         color:'black',
         fontSize:48,
         fontWeight:"600"
+    },
+    container:{
+        marginBottom:20,
+        marginTop:20,
     }
 })
 
@@ -21,7 +25,7 @@ changeTitleColor = (title) => {
 const formattedTitle = firstWord + " " + restOfTitle;
 
     return (
-        <View style={{marginBottom:20, marginTop:20}}>
+        <View style={styles.container}>
             <Text style={styles.firstWord}>{firstWord} <Text style={styles.restOfTitle}>{restOfTitle}</Text> </Text>
         </View>
     );
