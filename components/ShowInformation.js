@@ -26,7 +26,7 @@ const ShowInformation = ({route}) => {
             <View style={styles.showInfoParentContainer}>
 
                 <View style={styles.showInfoContainer}>
-                    {changeTitleColor(show.name)}
+                    {changeTitleColor(show.bigName)}
                     {/* slice show title when you see a space, turn that word into a different color  */}
                     <View style={styles.showInfo}>
                         <Text style={styles.p}>{show.info}</Text>

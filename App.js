@@ -20,6 +20,8 @@ import BottomTab from './components/BottomTab';
 import Loading from './components/Loading';
 import { Suspense } from 'react';
 import ShowInformation from './components/ShowInformation';
+import TrackPlayer from 'react-native-track-player';
+import { setupEventListeners } from './util/trackPlayer';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +38,10 @@ function App() {
   // },[loaded,error])
 
   // if (!loaded && !error) return SplashScreen.hideAsync();
+
+  useEffect(()=>{
+    TrackPlayer.registerPlaybackService(() => setupEventListeners);
+  },[])
 
 
   return (

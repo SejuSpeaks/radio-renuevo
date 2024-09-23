@@ -3,10 +3,12 @@ import { Dimensions, View, StyleSheet } from 'react-native';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import Animated, { useSharedValue, useAnimatedStyle, useAnimatedGestureHandler, withSpring, runOnJS } from 'react-native-reanimated';
 import { Audio } from "expo-av";
+import { setupPlayer, addTrack, setupEventListeners } from '../util/trackPlayer';
 
 import MusicPlayer from './MusicPlayer';
 import MiniPlayer from './MiniPlayer';
 import HomeBar from './HomeBar';
+import TrackPlayer, {State} from 'react-native-track-player';
 
 const { height } = Dimensions.get('window');
 const MINIMIZED_PLAYER_HEIGHT = 70;
@@ -28,34 +30,21 @@ const BottomTab = () => {
   const isMinimized = useSharedValue(1);
   const [activeTab, setActiveTab] = useState("Home")
   const [playing, setPlaying] = useState(false);
-  const [radio, setRadio] = useState();
   const previousTabRef = useRef(activeTab);
 
   useEffect(() => {
     const setupRadio = async () => {
       try {
-        // You can uncomment this if necessary
-        await Audio.setAudioModeAsync({
-          staysActiveInBackground: true,
-          playsInSilentModeIOS: true,
-        });
-        const url = "https://us2.maindigitalstream.com/ssl/7425";
-        console.log('Fetched URL:', url);
-  
-        // Check if the URL is working directly
-        const { sound: newSound } = await Audio.Sound.createAsync(
-          { uri: url }
-        );
-  
-        console.log('newSound created successfully:');  // success if it's created
-  
-        // Set the radio state
-        setRadio(newSound);
+        console.log('setting up radio')
+        await setupPlayer();
+        await addTrack();
+        setupEventListeners(setPlaying);
   
       } catch (error) {
         console.error('Error creating sound object:', error);  // Log the error
       }
     };
+
   
     setupRadio();
   }, []);
@@ -67,10 +56,10 @@ const BottomTab = () => {
 const changePlay = async () => {
     if (playing) {
         setPlaying(false);
-        await radio.pauseAsync();
+        await TrackPlayer.pause();
     } else {
         setPlaying(true);
-        await radio.playAsync();
+        await TrackPlayer.play();
     }
 };
   

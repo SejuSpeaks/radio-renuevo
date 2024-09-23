@@ -28,7 +28,7 @@ const socials = [
             height:50,
             backgroundColor:"black"
         }),
-        appUrl:'fb://profile/Renuevo102.3fm',
+        appUrl:'fb://profile/100064516279595',
         webUrl:'https://www.facebook.com/Renuevo102.3fm/',
 
     },
