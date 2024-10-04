@@ -4,12 +4,14 @@ const styles = StyleSheet.create({
     firstWord:{
         color:'#FC81C9',
         fontSize:48,
-        fontWeight:'600'
+        fontWeight:'600',
+        textAlign:'left'
     },
     restOfTitle:{
         color:'black',
         fontSize:48,
-        fontWeight:"600"
+        fontWeight:"600",
+        textAlign:'left'
     },
     container:{
         marginBottom:20,

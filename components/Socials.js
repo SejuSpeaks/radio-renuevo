@@ -29,7 +29,9 @@ const Icon = ({social}) => {
 }
 
 const Socials = ({socials}) => {
-    const displaySocials = socials.map((social,index) => <Icon key={index} social={social}/>)
+    const displaySocials = Array.isArray(socials) && socials.length > 0
+    ? socials.map((social, index) => <Icon key={index} social={social} />)
+    : null;
 
     return (
         <View>

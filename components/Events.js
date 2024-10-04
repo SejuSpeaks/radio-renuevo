@@ -17,7 +17,7 @@ const Events = () => {
 
   const data = [
     { uri: require("../assets/radioLogo.png") },
-    { uri: require("../assets/events/Image.png") },
+    { uri: require("../assets/radioLogo.png") },
     { uri: require("../assets/radioLogo.png") },
   ];
 

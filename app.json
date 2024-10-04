@@ -7,7 +7,7 @@
     "icon": "./assets/radioLogo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/radioLogo.png",
+      "image": "./assets/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

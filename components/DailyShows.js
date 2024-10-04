@@ -13,7 +13,7 @@ const ShowContainer = ({show}) => {
         <View style={styles.container}>
             <TouchableOpacity onPress={()=> navigation.navigate("ShowDetails", show)}>
                 <Image style={styles.image} source={show.image}/>
-                <Text>{show.name}</Text>
+                <Text style={styles.text}>{show.name}</Text>
             </TouchableOpacity>
         </View>
     )
@@ -43,6 +43,11 @@ const styles = StyleSheet.create({
         flexDirection:'row',
     },
 
+    text:{
+        alignContent:'center',
+        textAlign:'center'
+    },
+
     container:{
         justifyContent:"center",
         alignItems:'center',
@@ -57,7 +62,7 @@ const styles = StyleSheet.create({
       },
       image:{
         height:150,
-        borderRadius: 5,
+        borderRadius: 100,
         width: 150,
         resizeMode:'cover'
 

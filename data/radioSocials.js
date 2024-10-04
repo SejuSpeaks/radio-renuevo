@@ -48,21 +48,6 @@ const socials = [
         webUrl:'mailto:renuevo1023@gmail.com',
     },
     {
-        name:"Youtube",
-        icon: {name:'youtube', size:24, color:'white'},
-        linearColors:["#00B3FF","#FF2EA1"],
-        styles: StyleSheet.create({
-            justifyContent:'center',
-            alignItems:'center',
-            borderRadius:10,
-            width:50,
-            height:50,
-            backgroundColor:"black"
-        }),
-        appUrl:'youtube://',
-        webUrl:'',
-    },
-    {
         name:"Instagram",
         icon: {name:'instagram', size:24, color:'white'},
         linearColors:["#00B3FF","#FF2EA1"],
@@ -74,8 +59,8 @@ const socials = [
             height:50,
             backgroundColor:"black"
         }),
-        appUrl:'instagram://',
-        webUrl:'',
+        appUrl:'instagram://user?username=renuevo_102.3',
+        webUrl: 'https://www.instagram.com/renuevo_102.3/',
     },
         
 ]
