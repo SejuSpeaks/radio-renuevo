@@ -33,21 +33,6 @@ const socials = [
 
     },
     {
-        name:"Email",
-        icon: {name:'envelope', size:24, color:'white'},
-        linearColors:["#00B3FF","#FF2EA1"],
-        styles: StyleSheet.create({
-            justifyContent:'center',
-            alignItems:'center',
-            borderRadius:10,
-            width:50,
-            height:50,
-            backgroundColor:"black"
-        }),
-        appUrl:'googlegmail://co?to=renuevo1023@gmail.com',
-        webUrl:'mailto:renuevo1023@gmail.com',
-    },
-    {
         name:"Instagram",
         icon: {name:'instagram', size:24, color:'white'},
         linearColors:["#00B3FF","#FF2EA1"],
@@ -61,6 +46,21 @@ const socials = [
         }),
         appUrl:'instagram://user?username=renuevo_102.3',
         webUrl: 'https://www.instagram.com/renuevo_102.3/',
+    },
+    {
+        name:"Email",
+        icon: {name:'envelope', size:24, color:'white'},
+        linearColors:["#00B3FF","#FF2EA1"],
+        styles: StyleSheet.create({
+            justifyContent:'center',
+            alignItems:'center',
+            borderRadius:10,
+            width:50,
+            height:50,
+            backgroundColor:"black"
+        }),
+        appUrl:'googlegmail://co?to=renuevo1023@gmail.com',
+        webUrl:'mailto:renuevo1023@gmail.com',
     },
         
 ]

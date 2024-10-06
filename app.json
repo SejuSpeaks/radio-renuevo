@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Radio Renuevo",
+    "name": "Renuevo 102.3 FM",
     "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -12,7 +12,7 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "infoPlist": {
         "UIBackgroundModes": [
           "audio"
@@ -22,7 +22,8 @@
           "youtube",
           "whatsapp",
           "googlegmail",
-          "instagram"
+          "instagram",
+          "spotify"
         ]
       },
       "bundleIdentifier": "radiorenuevo"

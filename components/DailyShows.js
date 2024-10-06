@@ -21,14 +21,13 @@ const ShowContainer = ({show}) => {
 
 const DailyShows = () => {
     return (
-        <View>
+        <View style={{flex:1}}>
             <Text style={styles.heading}>Shows</Text>
             <FlatList
             style={styles.listContainer}
             data={shows}
             renderItem={({item})=> <ShowContainer show={item}/>}
             horizontal
-            pagingEnabled
             showsHorizontalScrollIndicator={false}
             bounces={false}
             />
@@ -52,6 +51,7 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems:'center',
         marginLeft:10,
+        paddingRight:5,
         
     },
     heading: {

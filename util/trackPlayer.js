@@ -42,13 +42,11 @@ export const setupEventListeners = (setPlaying) => {
         const playListener = TrackPlayer.addEventListener(Event.RemotePlay, async () => {
           await TrackPlayer.play();
           setPlaying(true)
-          console.log("PLAY BUTTON PRESSED");
         });
       
         const pasueListener = TrackPlayer.addEventListener(Event.RemotePause, async () => {
           await TrackPlayer.pause();
           setPlaying(false)
-          console.log("PAUSE BUTTON PRESSED");
         });
     
 

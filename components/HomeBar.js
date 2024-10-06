@@ -26,14 +26,14 @@ const HomeBar = ({activeTab, setActiveTab, isMinimized, translationY, SNAP_BOTTO
     return (
         <View style={styles.container} >
             <View style={styles.iconsContainer}>
-                <View >
+                <View  style={styles.iconChildContainer}>
                     <TouchableOpacity style={styles.iconBox} onPress={()=> navigateTo("Home") }>
                     <Ionicons name={activeTab === "Home" ? "home" : "home-outline"} size={25} color="black" />
                         <Text>Home</Text>
                     </TouchableOpacity>
                 </View>
 
-                <View >
+                <View style={styles.iconChildContainer} >
                     <TouchableOpacity style={styles.iconBox} onPress={()=> navigateTo("Live")}>
                         <Ionicons name={activeTab === "Live" ? "radio" : "radio-outline"} size={25} color="black" />
                         <Text>Live</Text>
@@ -56,17 +56,21 @@ const styles = StyleSheet.create({
     container:{
         height:80,
         backgroundColor:'#fff',
-        // borderTopWidth:2,
-        // borderColor:'grey',
         padding:10
-
     },
     iconsContainer:{
         display:"flex",
         flexDirection:'row',
+        // borderWidth:2,
+        // borderColor:'grey',
         justifyContent:'space-around',
         alignItems:'center'
     },
+    iconChildContainer:{
+        justifyContent:'center',
+        alignItems:'center'
+    },
+
     iconBox:{
         alignItems:'center',
         justifyContent:'center',

@@ -17,6 +17,12 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "digital@jocpromotions.com",
+        "ascAppId": "6736591892",
+        "appleTeamId": "43U56P49PV"
+      }
+    }
   }
 }

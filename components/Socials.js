@@ -4,7 +4,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { LinearGradient } from "expo-linear-gradient";
 
-const goToLink = (appUrl, webUrl) => {
+export const goToLink = (appUrl, webUrl) => {
     console.log('pressed')
     Linking.canOpenURL(appUrl)
     .then(supports => {

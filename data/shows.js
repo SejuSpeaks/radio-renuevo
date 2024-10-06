@@ -40,6 +40,37 @@ const shows = [
                 webUrl:'https://www.facebook.com/people/Yo-soy-Dignity/100095557771837/',
         
             },
+            {
+                name:"Instagram",
+                icon: {name:'instagram', size:24, color:'white'},
+                linearColors:["#00B3FF","#FF2EA1"],
+                styles: StyleSheet.create({
+                    justifyContent:'center',
+                    alignItems:'center',
+                    borderRadius:10,
+                    width:50,
+                    height:50,
+                    backgroundColor:"black"
+                }),
+                appUrl:'instagram://user?username=yosoydignity',
+                webUrl: 'https://www.instagram.com/yosoydignity?igsh=YWJjYjh4cGFyZXox',
+            },
+            {
+                name:"Spotify",
+                icon: {name:'spotify', size:24, color:'white'},
+                linearColors:["#00B3FF","#FF2EA1"],
+                styles: StyleSheet.create({
+                    justifyContent:'center',
+                    alignItems:'center',
+                    borderRadius:10,
+                    width:50,
+                    height:50,
+                    backgroundColor:"black"
+                }),
+                appUrl:'spotify://artist/2y6IuQQSL5T64cKzTPYuaM',
+                webUrl: 'https://open.spotify.com/artist/2y6IuQQSL5T64cKzTPYuaM',
+            },
+            
         ]
     },
     {
@@ -140,18 +171,90 @@ const shows = [
 
     },
     { 
+        image: require("../assets/corazon-pod.jpeg"),
+        name:"Conecta Tu Corazon",
+        bigName:"Conecta \n Tu Corazon",
+        time:"Viernes \n 11am",
+        info:"",
+        socials:[
+            {
+                name:"Youtube",
+                icon:{ name:'youtube', size:24, color:'white'},
+                linearColors:["#00B3FF","#FF2EA1"],
+                styles: StyleSheet.create({
+                    justifyContent:'center',
+                    alignItems:'center',
+                    borderRadius:10,
+                    width:50,
+                    height:50,
+                    backgroundColor:"black"
+                }),
+                appUrl:'youtube://www.youtube.com/@PastorEnriqueARiveraOficial',
+                webUrl:'https://www.youtube.com/@PastorEnriqueARiveraOficial',
+            },
+            {
+                name:"Instagram",
+                icon: {name:'instagram', size:24, color:'white'},
+                linearColors:["#00B3FF","#FF2EA1"],
+                styles: StyleSheet.create({
+                    justifyContent:'center',
+                    alignItems:'center',
+                    borderRadius:10,
+                    width:50,
+                    height:50,
+                    backgroundColor:"black"
+                }),
+                appUrl:'instagram://user?username=iccjoficial',
+                webUrl: 'https://www.instagram.com/iccjoficial/',
+            },
+        ]
+
+    },
+    { 
+        image: require("../assets/zona-de-fe-pod.jpeg"),
+        name:"Zona De FE",
+        bigName:"Zona \n De FE",
+        time:"Miercoles \n 7pm",
+        info:"",
+        socials:[
+            {
+                name:"Youtube",
+                icon:{ name:'youtube', size:24, color:'white'},
+                linearColors:["#00B3FF","#FF2EA1"],
+                styles: StyleSheet.create({
+                    justifyContent:'center',
+                    alignItems:'center',
+                    borderRadius:10,
+                    width:50,
+                    height:50,
+                    backgroundColor:"black"
+                }),
+                appUrl:'youtube://www.youtube.com/@PastorEnriqueARiveraOficial',
+                webUrl:'https://www.youtube.com/@PastorEnriqueARiveraOficial',
+            },
+            {
+                name:"Instagram",
+                icon: {name:'instagram', size:24, color:'white'},
+                linearColors:["#00B3FF","#FF2EA1"],
+                styles: StyleSheet.create({
+                    justifyContent:'center',
+                    alignItems:'center',
+                    borderRadius:10,
+                    width:50,
+                    height:50,
+                    backgroundColor:"black"
+                }),
+                appUrl:'instagram://user?username=iccjoficial',
+                webUrl: 'https://www.instagram.com/iccjoficial/',
+            },
+        ]
+
+    },
+    { 
         image: require("../assets/sirviendo.jpeg"),
         name:"Sirviendo Dia a Dia ",
         bigName:"Sirviendo \n Dia a Dia",
         time:"Miercoles \n 4-5pm",
-        info:""
-
-    },
-    { 
-        image: require("../assets/zonadefe.jpeg"),
-        name:"Zona De FE",
-        bigName:"Zona \n De FE",
-        time:"Miercoles \n 7pm",
         info:""
 
     },

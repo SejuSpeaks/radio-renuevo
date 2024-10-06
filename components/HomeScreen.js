@@ -9,6 +9,7 @@ import HomeBar from './HomeBar';
 import DailyShows from './DailyShows';
 
 import socials from '../data/radioSocials';
+import AdverstiseBar from './AdvertiseBar';
 
 const HomeScreen = ({navigation:{navigate}}) => {
     return (
@@ -26,13 +27,20 @@ const HomeScreen = ({navigation:{navigate}}) => {
     <View style={styles.container}>
       <Events/>
     </View>
+
+     
     
-    <View>
+    <View style={styles.container}>
       <Text style={styles.heading}>Socials</Text>
       <Socials socials={socials}/>
     </View>
 
+
     <View style={styles.footer}>
+      
+    <View style={styles.container}>
+        <AdverstiseBar/>
+    </View>
      
     </View>
 

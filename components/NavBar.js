@@ -9,12 +9,8 @@ const NavBar = () => {
     return (
         <View style={styles.container}>
             <TouchableOpacity onPress={() => navigation.navigate("Home")}>                
-                <Image style={styles.image} source={require('../assets/radioLogo.png')} />
+                <Image style={styles.image} source={require('../assets/logo.png')} />
             </TouchableOpacity>
-
-            {/* <TouchableOpacity onPress={() => navigation.navigate("Notifications")}>
-                <FontAwesome size={24} name="bell" />
-            </TouchableOpacity> */}
         </View>
     );
 }
