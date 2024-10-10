@@ -1,69 +1,38 @@
-import { View,Text,StyleSheet } from "react-native";
+import { View,Text,StyleSheet} from "react-native";
+import { Linking } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { LinearGradient } from "expo-linear-gradient";
 
-const socials = [
-    {
-        name:"WhatsApp",
-        icon: <FontAwesome name='whatsapp' size={24} color={'white'}/>,
-        styles: StyleSheet.create({
-            justifyContent:'center',
-            alignItems:'center',
-            borderRadius:100,
-            width:50,
-            height:50,
-            backgroundColor:"green"
-        })
-    },
-    {
-        name:"Facebook",
-        icon:<FontAwesome name='facebook' size={24} color={'white'}/>,
-        styles: StyleSheet.create({
-            justifyContent:'center',
-            alignItems:'center',
-            borderRadius:100,
-            width:50,
-            height:50,
-            backgroundColor:"blue"
-        })
-    },
-    {
-        name:"Email",
-        icon:<FontAwesome name='envelope' size={24} color={'white'}/>,
-        styles: StyleSheet.create({
-            justifyContent:'center',
-            alignItems:'center',
-            borderRadius:100,
-            width:50,
-            height:50,
-            backgroundColor:"grey"
-        })
-    },
-    {
-        name:"Youtube",
-        icon:<FontAwesome name='youtube' size={24} color={'white'}/>,
-        styles: StyleSheet.create({
-            justifyContent:'center',
-            alignItems:'center',
-            borderRadius:100,
-            width:50,
-            height:50,
-            backgroundColor:"red"
-        })
-    },
-        
-]
+export const goToLink = (appUrl, webUrl) => {
+    console.log('pressed')
+    Linking.canOpenURL(appUrl)
+    .then(supports => {
+        if(supports) return Linking.openURL(appUrl)
+        else return Linking.openURL(webUrl);
+    })
+    
+}
+
+
 
 const Icon = ({social}) => {
     return (
-    <View style={social.styles}>
-        {social.icon}
-    </View>
+    <TouchableOpacity onPress={()=>goToLink(social.appUrl,social.webUrl)} style={social.styles}>
+        <LinearGradient colors={social.linearColors} style={social.styles}>
+            <Text>
+                <FontAwesome  name={social.icon.name} size={social.icon.size} color={social.icon.color}/>
+            </Text>
+        </LinearGradient>
+    </TouchableOpacity>
     )
 }
 
-const displaySocials = socials.map((social,index) => <Icon key={index} social={social}/>)
+const Socials = ({socials}) => {
+    const displaySocials = Array.isArray(socials) && socials.length > 0
+    ? socials.map((social, index) => <Icon key={index} social={social} />)
+    : null;
 
-const Socials = () => {
     return (
         <View>
             <View style={styles.iconsContainer}>

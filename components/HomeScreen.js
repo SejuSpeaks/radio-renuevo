@@ -8,44 +8,57 @@ import Socials from './Socials';
 import HomeBar from './HomeBar';
 import DailyShows from './DailyShows';
 
+import socials from '../data/radioSocials';
+import AdverstiseBar from './AdvertiseBar';
+
 const HomeScreen = ({navigation:{navigate}}) => {
     return (
-    <SafeAreaView style={{backgroundColor:'white', flex:1}}>
+    <SafeAreaView style={styles.parent}>
     <ScrollView >
     
-    <View style={styles.container}>
+    {/* <View style={styles.container}>
       <Radio/>
+    </View> */}
+    
+    <View style={styles.container}>
+      <DailyShows/>
     </View>
     
     <View style={styles.container}>
       <Events/>
     </View>
-    
 
+     
+    
     <View style={styles.container}>
-      <DailyShows/>
+      <Text style={styles.heading}>Socials</Text>
+      <Socials socials={socials}/>
     </View>
 
 
-
-
-
-    <View>
-      <Text style={styles.heading}>Socials</Text>
-      <Socials/>
+    <View style={styles.footer}>
+      
+    <View style={styles.container}>
+        <AdverstiseBar/>
+    </View>
+     
     </View>
 
     </ScrollView>
-
-    {/* <View style={styles.homeBar}>
-      <HomeBar/>
-    </View> */}
     
    </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
+  parent:{
+    flex:1,
+    backgroundColor:'white',
+  },
+  footer:{
+    padding:30,
+    marginBottom:30,
+  },
   container:{
     marginBottom:30,
   },

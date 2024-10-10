@@ -7,7 +7,7 @@ const Item = ({ item }) => {
    
   return (
     <View style={[styles.itemContainer, {width}]}>
-      <Image source={ item.uri} style={[styles.image, {width, resizeMode:'contain'}]} />
+      <Image source={item.uri} style={[styles.image, {width, resizeMode:'contain'}]} />
     </View>
   );
 };
@@ -16,9 +16,9 @@ const Events = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const data = [
-    { uri: require("../assets/events/Image.png") },
-    { uri: require("../assets/radioLogo.png") },
-    { uri: require("../assets/radioLogo.png") },
+    { uri: require("../assets/logo.png") },
+    { uri: require("../assets/logo.png") },
+    { uri: require("../assets/logo.png") },
   ];
 
   return (
@@ -55,11 +55,11 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     marginBottom: 16,
-    width: width - 32,
+   
   },
   image: {
     width: width - 32,
-    height: 185,
+    height: 200,
     resizeMode: 'cover',
   },
   flatlist:{
