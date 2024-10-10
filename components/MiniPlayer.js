@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity, Animated, PanResponder, Dimensions } from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from "@react-navigation/native";
+import { State } from 'react-native-track-player';
 import { Audio } from "expo-av";
+import { play } from "react-native-track-player/lib/src/trackPlayer";
 
 const { height } = Dimensions.get('window');
 
@@ -15,7 +17,7 @@ const MiniPlayer = ({playing, setPlaying, changePlay}) => {
                 <View style={styles.container}>
 
                     <View style={{ flexDirection: 'row', gap: 10, height: '100%', }}>
-                        <Image style={styles.image} source={require("../assets/radioLogo.png")} />
+                        <Image style={styles.image} source={require("../assets/radioGradient.png")} />
                         <View style={{ justifyContent: 'center' }}>
                             <Text style={styles.songTitle}>Radio Renuevo</Text>
                             <Text style={styles.artistName}>102.3FM</Text>

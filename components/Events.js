@@ -16,9 +16,9 @@ const Events = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const data = [
-    { uri: require("../assets/radioLogo.png") },
-    { uri: require("../assets/events/Image.png") },
-    { uri: require("../assets/radioLogo.png") },
+    { uri: require("../assets/logo.png") },
+    { uri: require("../assets/logo.png") },
+    { uri: require("../assets/logo.png") },
   ];
 
   return (

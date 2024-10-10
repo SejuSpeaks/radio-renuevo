@@ -8,35 +8,39 @@ import Socials from './Socials';
 import HomeBar from './HomeBar';
 import DailyShows from './DailyShows';
 
+import socials from '../data/radioSocials';
+import AdverstiseBar from './AdvertiseBar';
 
 const HomeScreen = ({navigation:{navigate}}) => {
     return (
     <SafeAreaView style={styles.parent}>
     <ScrollView >
     
-    <View style={styles.container}>
+    {/* <View style={styles.container}>
       <Radio/>
+    </View> */}
+    
+    <View style={styles.container}>
+      <DailyShows/>
     </View>
     
     <View style={styles.container}>
       <Events/>
     </View>
+
+     
     
-
     <View style={styles.container}>
-      <DailyShows/>
-    </View>
-
-
-
-
-
-    <View>
       <Text style={styles.heading}>Socials</Text>
-      <Socials/>
+      <Socials socials={socials}/>
     </View>
+
 
     <View style={styles.footer}>
+      
+    <View style={styles.container}>
+        <AdverstiseBar/>
+    </View>
      
     </View>
 

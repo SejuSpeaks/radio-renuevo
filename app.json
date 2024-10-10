@@ -1,21 +1,29 @@
 {
   "expo": {
-    "name": "app",
+    "name": "Renuevo 102.3 FM",
     "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/radioLogo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "infoPlist": {
         "UIBackgroundModes": [
           "audio"
+        ],
+        "LSApplicationQueriesSchemes": [
+          "fb",
+          "youtube",
+          "whatsapp",
+          "googlegmail",
+          "instagram",
+          "spotify"
         ]
       },
       "bundleIdentifier": "radiorenuevo"
@@ -24,7 +32,24 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "READ_PHONE_STATE",
+        "WRITE_EXTERNAL_STORAGE",
+        "READ_EXTERNAL_STORAGE",
+        "ACCESS_NETWORK_STATE",
+        "ACCESS_WIFI_STATE",
+        "INTERNET"
+      ],
+      "config": {
+        "expo": {
+          "audio": {
+            "backgroundMode": true,
+            "playInBackground": true
+          }
+        }
+      },
+      "package": "com.jaelbuenocodes.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -36,6 +61,12 @@
       "eas": {
         "projectId": "1b8c2cc6-acbc-42d9-be1c-02ed2412dfc1"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/1b8c2cc6-acbc-42d9-be1c-02ed2412dfc1"
     }
   }
 }

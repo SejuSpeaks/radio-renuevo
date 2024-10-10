@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Dimensions, View, StyleSheet } from 'react-native';
 import { PanGestureHandler } from 'react-native-gesture-handler';
-import Animated, { useSharedValue, useAnimatedStyle, useAnimatedGestureHandler, withSpring } from 'react-native-reanimated';
+import Animated, { useSharedValue, useAnimatedStyle, useAnimatedGestureHandler, withSpring, runOnJS } from 'react-native-reanimated';
 import { Audio } from "expo-av";
+import { setupPlayer, addTrack, setupEventListeners } from '../util/trackPlayer';
 
 import MusicPlayer from './MusicPlayer';
 import MiniPlayer from './MiniPlayer';
 import HomeBar from './HomeBar';
+import TrackPlayer, {State} from 'react-native-track-player';
 
 const { height } = Dimensions.get('window');
 const MINIMIZED_PLAYER_HEIGHT = 70;
@@ -28,38 +30,36 @@ const BottomTab = () => {
   const isMinimized = useSharedValue(1);
   const [activeTab, setActiveTab] = useState("Home")
   const [playing, setPlaying] = useState(false);
-  const [radio, setRadio] = useState();
-
+  const previousTabRef = useRef(activeTab);
 
   useEffect(() => {
     const setupRadio = async () => {
-
-        // await Audio.setAudioModeAsync({
-        //     staysActiveInBackground: true,
-        //     playsInSilentModeIOS: true,
-        // })
-
-        const url = await fetchStreamUrl("https://us2.maindigitalstream.com:2199/tunein/renuevo.pls");
-        const { sound: newSound } = await Audio.Sound.createAsync(
-            { uri: url }
-        );
-
-
-        setRadio(newSound);
+      try {
+        console.log('setting up radio')
+        await setupPlayer();
+        await addTrack();
+        setupEventListeners(setPlaying);
+  
+      } catch (error) {
+        console.error('Error creating sound object:', error);  // Log the error
+      }
     };
 
+  
     setupRadio();
-}, []);
+  }, []);
+  
+  
+
 
 
 const changePlay = async () => {
     if (playing) {
-        console.log('stopping sound');
         setPlaying(false);
-        await radio.pauseAsync();
+        await TrackPlayer.pause();
     } else {
         setPlaying(true);
-        await radio.playAsync();
+        await TrackPlayer.play();
     }
 };
   
@@ -71,13 +71,20 @@ const changePlay = async () => {
       translationY.value = ctx.startY + event.translationY;
     },
     onEnd: (event) => {
-      if (event.velocityY > 0) {
+      //if swiping down from live tab
+      if(activeTab === 'Live' && event.velocityY >! 0){
+        translationY.value = withSpring(SNAP_BOTTOM,springConfig);
+        isMinimized.value = 1
+        runOnJS(setActiveTab)(previousTabRef.current)
+      }
+      else if (event.velocityY > 0) {
         translationY.value = withSpring(SNAP_BOTTOM,springConfig);
         isMinimized.value = 1
     } else {
         translationY.value = withSpring(SNAP_TOP,springConfig);
         isMinimized.value = 0
       }
+      
     },
   });
 
@@ -88,7 +95,6 @@ const changePlay = async () => {
   });
 
   const minimizedStyle = useAnimatedStyle(()=>{
-    console.log(isMinimized.value)
         return {
             opacity: isMinimized.value
         }
@@ -99,7 +105,16 @@ const changePlay = async () => {
     <>
       <PanGestureHandler onGestureEvent={gestureHandler}>
         <Animated.View style={[styles.MusicPlayerSheet, animatedStyle]}>
-          <MusicPlayer changePlay={changePlay} playing={playing} setPlaying={setPlaying} />
+          <MusicPlayer
+           changePlay={changePlay}
+           playing={playing}
+           setPlaying={setPlaying}
+           translationY={translationY}
+           isMinimized={isMinimized}
+           SNAP_BOTTOM={SNAP_BOTTOM}
+           springConfig={springConfig}
+           setActiveTab={setActiveTab}
+            />
           <Animated.View
             style={[{
               position: 'absolute',
@@ -122,7 +137,8 @@ const changePlay = async () => {
         setActiveTab={setActiveTab}
         isMinimized={isMinimized}
         translationY={translationY}
-        SNAP_BOTTOM={SNAP_BOTTOM}    
+        SNAP_BOTTOM={SNAP_BOTTOM}
+        springConfig={springConfig}    
             />
       </Animated.View>
     </>
@@ -147,9 +163,13 @@ const styles = StyleSheet.create({
   },
 });
 
+
+//this is incase a pls file is used for the stream .
 const fetchStreamUrl = async (url) => {
+  console.log('functin url', url)
     try {
-        const response = await fetch(url);
+      const response = await fetch(url);
+      console.log('rseponse status', response.status)
         const text = await response.text();
         const matches = text.match(/File1=(.+)/);
         return matches ? matches[1].trim() : null;
