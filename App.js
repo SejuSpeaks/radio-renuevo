@@ -1,20 +1,17 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import * as SplashScreen from 'expo-splash-screen';
-import {useFonts} from 'expo-font';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import HomeScreen from './components/HomeScreen'; 
 import Live from './components/Live';
 import NotificationsScreen from './components/NotificationsScreen';
-import HomeBar from './components/HomeBar';
 import ArtistProfile from './components/ArtistProfile';
 import NavBar from './components/NavBar';
 import { SafeAreaView, StatusBar } from 'react-native';
-import MiniPlayer from './components/MiniPlayer';
 import MusicPlayer from './components/MusicPlayer';
 import BottomTab from './components/BottomTab';
 import Loading from './components/Loading';
@@ -22,25 +19,55 @@ import { Suspense } from 'react';
 import ShowInformation from './components/ShowInformation';
 import TrackPlayer from 'react-native-track-player';
 import { setupEventListeners } from './util/trackPlayer';
-
+import { convertToLocalTime, registerForPushNotificationsAsync, schedulePushNotifications } from './util/pushNotifications';
+import * as Notifications from 'expo-notifications';
 const Stack = createStackNavigator();
 
 // SplashScreen.preventAutoHideAsync();
 
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
+
+
 function App() {
-  //loading the fonts into the app
-  // const [loaded,error] = useFonts({
-  //   'Gotahm-Bold': require('./assets/fonts/Gotham-Font/Gotham-Bold.otf'),
-  // })
-
-  // useEffect(()=>{
-  //   if(loaded || error) SplashScreen.hideAsync()
-  // },[loaded,error])
-
-  // if (!loaded && !error) return SplashScreen.hideAsync();
+  const [expoPushToken, setExpoPushToken] = useState('');
+  const [notification, setNotification] = useState(undefined);
+  const notificationListener = useRef();
+  const responseListener = useRef();
 
   useEffect(()=>{
+    //set up TrackPlayer
     TrackPlayer.registerPlaybackService(() => setupEventListeners);
+    //set up notifications
+    registerForPushNotificationsAsync()
+    .then(token => setExpoPushToken(token ?? ""))
+    .catch(error => setExpoPushToken(`${error}`))
+
+    console.log(expoPushToken);
+
+    notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+      setNotification(notification);
+    });
+
+    responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+      console.log(response);
+    });
+
+    schedulePushNotifications('1:01 PM EST');
+
+    return () => {
+      notificationListener.current &&
+        Notifications.removeNotificationSubscription(notificationListener.current);
+      responseListener.current &&
+        Notifications.removeNotificationSubscription(responseListener.current);
+    };
+
   },[])
 
 
