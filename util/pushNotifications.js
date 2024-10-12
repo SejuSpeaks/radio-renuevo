@@ -2,6 +2,10 @@ import { Text, View, Button, Platform } from 'react-native';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import Constants from 'expo-constants';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+//import shows
+import shows from '../data/shows';
 
 
 function handleRegistrationError(errorMessage) {
@@ -20,8 +24,26 @@ export async function registerForPushNotificationsAsync() {
     }
   
     if (Device.isDevice) {
+
+
+      //check if token exits
+      try {
+        const storedToken = await AsyncStorage.getItem('expoPushToken');
+        if (storedToken) {
+          console.log('Token already exists:', storedToken);
+          // Commit some action here or return the token
+          return storedToken;
+        } else {
+          console.log('No token found, registering for push notifications...');
+        }
+      } catch (error) {
+        console.error('Error checking for token in AsyncStorage:', error);
+      }
+
       const { status: existingStatus } = await Notifications.getPermissionsAsync();
+
       let finalStatus = existingStatus;
+
       if (existingStatus !== 'granted') {
         const { status } = await Notifications.requestPermissionsAsync();
         finalStatus = status;
@@ -42,6 +64,15 @@ export async function registerForPushNotificationsAsync() {
           })
         ).data;
         console.log(pushTokenString);
+
+        //store in async storage
+        try {
+          await AsyncStorage.setItem('expoPushToken', pushTokenString);
+          console.log('Token saved successfully:', token);
+        } catch (error) {
+          console.error('Error saving token:', error);
+        }
+
         return pushTokenString;
       } catch (e) {
         handleRegistrationError(`${e}`);
@@ -104,14 +135,60 @@ export async function registerForPushNotificationsAsync() {
 
 
 
-export async function schedulePushNotifications(timeOfShow){
-  const triggerDate = await convertToLocalTime(timeOfShow);
+export async function schedulePushNotifications(shows) {
+  const scheduledNotifications = await Notifications.getAllScheduledNotificationsAsync();
+  console.log('Scheduled notifications:', scheduledNotifications);
+  if(scheduledNotifications.length > 0){
+    await Notifications.cancelAllScheduledNotificationsAsync();
+    console.log(result, 'AFTER DELETING NOTIFICATIONS')
+  }
 
-  await Notifications.scheduleNotificationAsync({
-      content:{
-          'title': 'Notifications worked!',
-          body:"This worked woohoo!"
-      },
-      trigger:{date: triggerDate}
-  })
+  await Promise.all(shows.map(async (show)=> {
+
+    await Promise.all(show.days.map(async (day) => {
+      console.log('THIS IS THE DAY OBJ', day, 'THIS IS SHOW NAME', show.name)
+      try {
+        await Notifications.scheduleNotificationAsync({
+          content: {
+            title: `${show.name} is now Live!`,
+            body: 'Tune in to our show!',
+          },
+          trigger: {
+              weekday: day.weekday, // Thursday (Sunday = 1, Monday = 2, etc.)
+              hour: day.hour,   // 6 PM in 24-hour format
+              minute: day.minutes? day.minutes : 0,
+              timeZone: 'America/New_York', // Eastern Time
+              repeats: true 
+          },
+  
+        });
+      } catch (error) {
+        console.log('ERROR THIS IS ERROR',error)
+      }
+      
+      
+    }))
+  
+
+  }))
+  const again = await Notifications.getAllScheduledNotificationsAsync();
+  console.log('Scheduled notifications:', again);
+  console.log('----------------------------------------------------------------------------------')
 }
+
+/* {
+{
+  title: title,
+  days:[
+    {
+      weekday: 2,
+      hour:17
+    },
+    {
+      weekday: 4,
+      hour:10
+    },
+  ]
+}
+
+} */

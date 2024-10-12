@@ -23,6 +23,9 @@ import { convertToLocalTime, registerForPushNotificationsAsync, schedulePushNoti
 import * as Notifications from 'expo-notifications';
 const Stack = createStackNavigator();
 
+//import shows
+import shows from './data/shows';
+
 // SplashScreen.preventAutoHideAsync();
 
 
@@ -50,16 +53,17 @@ function App() {
     .catch(error => setExpoPushToken(`${error}`))
 
     console.log(expoPushToken);
-
+    
     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
       setNotification(notification);
     });
-
+    
     responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
       console.log(response);
     });
 
-    schedulePushNotifications('1:01 PM EST');
+    schedulePushNotifications(shows)
+
 
     return () => {
       notificationListener.current &&

@@ -7,6 +7,17 @@ const shows = [
         name:"Yo soy Dignity",
         bigName:"Yo soy \n Dignity",
         time:"Jueves \n 5-6",
+        days:[
+            {
+                "weekday":5,
+                "hour":17
+            },
+            {
+                "weekday":7,
+                "hour":15,
+                "minutes":38
+            }
+        ],
         info:"Dignity nace del dolor, del sufrimiento, de la superacion de nuestra fundadora Ivelisse Medina quien por medio de todo lo que emprende, ha sido ejemplo de superacion e influencia a todos aquellos que han experimentado violencia economica, psicologica, emocional, fisica, y sexual siendo una voz de alerta ante el fenenicidio.  El nombre y enfoque del programa sugiere temas relacionados con el respeto, y la autoestima.  El contexto del programa define claramente que significa dignidad. El objetivo es empoderar al oyente con informacion util creando un espacio de apoyo, promoviendo la importancia de los valores del respeto y la empstia. Intereses: salud, bienesestar, derechos, historias inspiradoras, educacion, empleo, etc. segmentos: Entrevistas: Foros y consultas",
         socials:[
             {
@@ -78,6 +89,20 @@ const shows = [
         name:"Renueva tu Ritmo",
         bigName:"Renueva tu \n Ritmo",
         time:"Lunes, Miercoles, Viernes \n 6-7 " ,
+        days:[
+            {
+                "weekday":2,
+                "hour":18
+            },
+            {
+                "weekday":4,
+                "hour":18
+            },
+            {
+                "weekday":6,
+                "hour":18
+            }
+        ],
         info:"Renueva tu ritmo Un programa lleno de mucha música Información que debes escuchar Temas del evangelio que no muchos quieren tocar. Mucha risa pero sobre todo Cristo céntrico. ",
         socials:[
             {
@@ -119,6 +144,16 @@ const shows = [
         name:"Entrelazados",
         bigName:"Entrelazados",
         time:"Martes, Jueves \n 6-7",
+        days:[
+            {
+                "weekday":3,
+                "hour":18
+            },
+            {
+                "weekday":5,
+                "hour":18
+            }
+        ],
         info:"Un programa creado por el pastor Julio y Bibiana lleno de mucha información para su vida en general cómo el noviazgo, matrimonio y su vida  diaria pero todo enfocado en Cristo. Ellos le pone un toque divertido con sus testimonios.",
         socials:[
             {
@@ -175,6 +210,12 @@ const shows = [
         name:"Conecta Tu Corazon",
         bigName:"Conecta \n Tu Corazon",
         time:"Viernes \n 11am",
+        days:[
+            {
+                "weekday":6,
+                "hour":11
+            }
+        ],
         info:"",
         socials:[
             {
@@ -215,6 +256,12 @@ const shows = [
         name:"Zona De FE",
         bigName:"Zona \n De FE",
         time:"Miercoles \n 7pm",
+        days:[
+            {
+                "weekday":4,
+                "hour":19
+            }
+        ],
         info:"",
         socials:[
             {
@@ -255,6 +302,12 @@ const shows = [
         name:"Sirviendo Dia a Dia ",
         bigName:"Sirviendo \n Dia a Dia",
         time:"Miercoles \n 4-5pm",
+        days:[
+            {
+                "weekday":4,
+                "hour":16
+            }
+        ],
         info:""
 
     },
